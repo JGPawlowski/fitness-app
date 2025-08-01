@@ -8,6 +8,7 @@ header {
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 25px;
+  margin-bottom: 30px;
   background-color: #141421;
 }
 
@@ -33,3 +34,38 @@ body {
   color: white;
   font-size: 1.17rem;
 }
+
+.main-container {
+  display: flex;
+}
+
+main {
+  color: white;
+}
+
+section {
+  border: 1px solid white;
+  margin: 5px;
+  padding: 5px;
+}
+
+.left,
+.right {
+  flex: 1;
+}
+
+.consistency {
+  width: 50%;
+  justify-self: center;
+}
+
+.right,
+.left,
+.consistency {
+  padding: 10px;
+}
+
+.consistency {
+  margin-top: 20px;
+}
+
