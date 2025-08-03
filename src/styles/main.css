@@ -1,0 +1,34 @@
+.main-container {
+  display: flex;
+}
+
+main {
+  color: white;
+}
+
+section {
+  border: 1px solid white;
+  margin: 5px;
+  padding: 5px;
+}
+
+.left,
+.right {
+  flex: 1;
+}
+
+.consistency {
+  width: 50%;
+  justify-self: center;
+}
+
+.right,
+.left,
+.consistency {
+  padding: 10px;
+  text-align: center;
+}
+
+.consistency {
+  margin: 20px 0px 20px 0px;
+}

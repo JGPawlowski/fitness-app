@@ -1,3 +1,5 @@
+import '../styles/main.css'
+
 import {
   Chart as ChartJS,
   LineElement,
@@ -70,7 +72,14 @@ export default function Main() {
                 </div>
 
                 <section className='right'>
-                    <h3>This section could show workouts recently done, scheduled workouts, or other similar things</h3>
+                  <h3 style={{textDecoration: 'underline'}}>Weekly stats</h3>
+                  <p>This section could show workouts recently done, scheduled workouts, or other similar things</p>
+                  <p>Have an arrow button to scroll through different sections of stats for the week</p>
+                  <ul>
+                    <li>Averagedaily calories and macros for the week</li>
+                    <li>Workouts done during the week and stats on those</li>
+                    <li>Other things that have been logged</li>
+                  </ul>
                 </section>
             </div>
 
@@ -81,3 +90,81 @@ export default function Main() {
         </main>
     )
 }
+
+
+
+
+
+
+
+
+
+/*
+const [foodQuery, setFoodQuery] = useState('');
+const [foodResults, setFoodResults] = useState(null);
+
+const [exerciseQuery, setExerciseQuery] = useState('');
+const [exerciseResults, setExerciseResults] = useState(null);
+
+const [totalCaloriesIn, setTotalCaloriesIn] = useState(0);
+const [totalCaloriesOut, setTotalCaloriesOut] = useState(0);
+
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState(null);
+
+
+
+const inputRef = useRef(); // DOM reference
+const isFirstRender = useRef(true); // flag to avoid first useEffect
+const previousTotalCalories = useRef(0); // compare current and previous
+
+
+
+useEffect(() => {
+  if (!foodQuery) return;
+
+  const fetchFoodData = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch(`API_URL?q=${foodQuery}`);
+      const data = await res.json();
+      setFoodResults(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchFoodData();
+}, [foodQuery]);
+
+
+
+
+
+
+
+
+// 1. useRef to focus input
+useEffect(() => {
+  inputRef.current.focus();
+}, []);
+
+// 2. useState for user input
+<input ref={inputRef} value={foodQuery} onChange={e => setFoodQuery(e.target.value)} />
+
+// 3. useEffect to fetch data on input change
+useEffect(() => {
+  if (!foodQuery) return;
+
+  const timeout = setTimeout(() => {
+    fetchCaloriesFromFood(foodQuery);
+  }, 500); // debounce
+
+  return () => clearTimeout(timeout);
+}, [foodQuery]);
+
+
+
+*/ 

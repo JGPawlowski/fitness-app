@@ -1,4 +1,4 @@
-
+import '../styles/header.css'
 
 export default function Header() {
     return (
@@ -8,6 +8,7 @@ export default function Header() {
                 <p>some link</p>
                 <p>some link</p>
                 <p>some link</p>
+                <img className='user-icon' src='/src/assets/user-line.svg' alt='user-icon'/>
             </div>
         </header>
     )
