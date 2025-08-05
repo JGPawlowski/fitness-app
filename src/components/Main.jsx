@@ -1,48 +1,35 @@
+import { useState } from 'react';
 import '../styles/main.css'
+import Weekly from './Weekly';
 
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend,} from 'chart.js';
 import { Line } from 'react-chartjs-2';
 
 // Register required components
-ChartJS.register(
-  LineElement,
-  PointElement,
-  CategoryScale,
-  LinearScale,
-  Tooltip,
-  Legend
-);
+ChartJS.register( LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend );
 
 
 export default function Main() {
 
-      const data = {
-    labels: ['Jun', 'Jul', 'Aug'],
-    datasets: [
-      {
-        id: 1,
-        label: 'Dataset 1',
-        data: [5, 6, 7],
-        borderColor: 'rgba(75,192,192,1)',
-        backgroundColor: 'rgba(75,192,192,0.2)',
-      },
-      {
-        id: 2,
-        label: 'Dataset 2',
-        data: [3, 2, 1],
-        borderColor: 'rgba(255,99,132,1)',
-        backgroundColor: 'rgba(255,99,132,0.2)',
-      },
-    ],
-  };
+    const data = {
+      labels: ['Jun', 'Jul', 'Aug'],
+      datasets: [
+        {
+          id: 1,
+          label: 'Dataset 1',
+          data: [5, 6, 7],
+          borderColor: 'rgba(75,192,192,1)',
+          backgroundColor: 'rgba(75,192,192,0.2)',
+        },
+        {
+          id: 2,
+          label: 'Dataset 2',
+          data: [3, 2, 1],
+          borderColor: 'rgba(255,99,132,1)',
+          backgroundColor: 'rgba(255,99,132,0.2)',
+        },
+      ],
+    };
 
   const options = {
     responsive: true,
@@ -54,33 +41,39 @@ export default function Main() {
   };
 
 
+    const [currentView, setCurrentView] = useState('fitness')
+
+    const toggleView = () => {
+        setCurrentView((prev) => (prev === 'fitness' ? 'nutrition' : 'fitness'))
+    }
 
 
 
     return (
 
+
         <main>
             <div className='main-container'>
                 <div className='left'>
                     <section className='top-left'>
-                        <h3>This section could have a chart(s) that include long-term goals, daily goals, etc.</h3>
+                        <p>This section could have a chart(s) that include long-term goals, daily goals, etc.</p>
                     </section>
                     
                     <section className='bottom-left'>
-                        <h3>This could show the planned meals for the day or an area to enter in the food that has been eaten</h3>
+                      <ul>
+                        <h4>Daily Achievments</h4>
+                        <li>This could show the planned meals for the day or an area to enter in the food that has been eaten</li>
+                        <li>Form to enter in food and water that have been eaten/drank today</li>
+                        <li>Show the splits on the day for calories/macros and total water consumed</li>
+                      </ul>
                     </section>
                 </div>
 
-                <section className='right'>
-                  <h3 style={{textDecoration: 'underline'}}>Weekly stats</h3>
-                  <p>This section could show workouts recently done, scheduled workouts, or other similar things</p>
-                  <p>Have an arrow button to scroll through different sections of stats for the week</p>
-                  <ul>
-                    <li>Averagedaily calories and macros for the week</li>
-                    <li>Workouts done during the week and stats on those</li>
-                    <li>Other things that have been logged</li>
-                  </ul>
-                </section>
+                <Weekly 
+                  currentView={currentView}
+                  onToggle={toggleView}
+                />
+
             </div>
 
                 <section className='consistency'>

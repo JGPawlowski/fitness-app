@@ -8,12 +8,11 @@ main {
 
 section {
   border: 1px solid white;
-  margin: 5px;
   padding: 5px;
 }
 
 .left,
-.right {
+.weekly-stats-container {
   flex: 1;
 }
 
@@ -22,7 +21,7 @@ section {
   justify-self: center;
 }
 
-.right,
+.weekly-stats-container,
 .left,
 .consistency {
   padding: 10px;
@@ -31,4 +30,18 @@ section {
 
 .consistency {
   margin: 20px 0px 20px 0px;
+}
+
+.weekly-stats-container {
+  text-align: center;
+  margin: 10px;
+}
+
+.stats-card {
+  background-color: black;
+}
+
+.top-left {
+  margin-top: 0px;
+  margin-bottom: 12px;
 }
