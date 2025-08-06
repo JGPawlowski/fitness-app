@@ -1,3 +1,5 @@
+import Nutrition from "./Nutrition";
+import Fitness from "./Fitness";
 
 
 export default function Weekly(props) {
@@ -5,7 +7,10 @@ export default function Weekly(props) {
     return (
          <section className='weekly-stats-container'>
             <div className='stats-card'>
-                {props.currentView === 'fitness' ? <h1>fit</h1> : <h1>nutrition</h1>}
+                {
+                    props.currentView === 'fitness' ?
+                    <Fitness /> : <Nutrition />
+                }
             </div>
         
             <button onClick={props.onToggle}>Flip</button>

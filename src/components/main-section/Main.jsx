@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import '../styles/main.css'
-import Weekly from './Weekly';
+import './main-section.css'
+import Weekly from '/src/components/Weekly/Weekly';
 
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend,} from 'chart.js';
 import { Line } from 'react-chartjs-2';
@@ -61,7 +61,7 @@ export default function Main() {
                     
                     <section className='bottom-left'>
                       <ul>
-                        <h4>Daily Achievments</h4>
+                        <h4>Daily Achievments or Enter in food for the day</h4>
                         <li>This could show the planned meals for the day or an area to enter in the food that has been eaten</li>
                         <li>Form to enter in food and water that have been eaten/drank today</li>
                         <li>Show the splits on the day for calories/macros and total water consumed</li>

@@ -1,0 +1,15 @@
+.weekly-stats-container {
+  flex: 1;
+  text-align: center;
+    padding: 10px;
+  text-align: center;
+  margin: 10px;
+}
+
+.nutrition-stats-container {
+    text-align: left;
+}
+
+.fitness-stats-container {
+    text-align: left;
+}

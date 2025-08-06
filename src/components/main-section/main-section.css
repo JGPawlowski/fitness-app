@@ -11,8 +11,7 @@ section {
   padding: 5px;
 }
 
-.left,
-.weekly-stats-container {
+.left {
   flex: 1;
 }
 
@@ -21,7 +20,6 @@ section {
   justify-self: center;
 }
 
-.weekly-stats-container,
 .left,
 .consistency {
   padding: 10px;
@@ -32,14 +30,6 @@ section {
   margin: 20px 0px 20px 0px;
 }
 
-.weekly-stats-container {
-  text-align: center;
-  margin: 10px;
-}
-
-.stats-card {
-  background-color: black;
-}
 
 .top-left {
   margin-top: 0px;
