@@ -1,15 +1,15 @@
 
 
-export default function Fitness() {
+export default function Fitness(props) {
     return (
         <>
+            <h2>Weekly Fitness Averages</h2>
             <div className="fitness-stats-container">
-                <h2>Weekly Fitness Averages</h2>
                 <ul>
-                    <li>Calories Burned: 100 100</li>
-                    <li>Steps: 100 100</li>
-                    <li>Heart Rate: 100 100</li>
-                    <li>Sleep Per Night: 100 100</li>
+                    <li>Calories Burned: {props.caloriesBurned}</li>
+                    <li>Steps: {props.steps}</li>
+                    <li>Heart Rate: {props.heartRate}bpm</li>
+                    <li>Sleep Per Night: {props.sleep} hours</li>
                 </ul>
             </div>
         </>

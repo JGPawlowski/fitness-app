@@ -8,7 +8,9 @@ export default function Header() {
                 <p>some link</p>
                 <p>some link</p>
                 <p>some link</p>
-                <img className='user-icon' src='/src/assets/user-line.svg' alt='user-icon'/>
+                <a href='http://www.google.com'> {/* will link this to a users page later on */}
+                    <img className='user-icon' src='/src/assets/user-line.svg' alt='user-icon'/>
+                </a>
             </div>
         </header>
     )

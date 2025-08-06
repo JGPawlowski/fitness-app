@@ -1,6 +1,6 @@
 import './weekly-styles.css'
 
-export default function Nutrition() {
+export default function Nutrition(props) {
     return (
         <>
             <h2>Weekly Nutrition Averages</h2>
@@ -11,22 +11,22 @@ export default function Nutrition() {
                     <li>
                     <strong>Macronutrients:</strong>
                     <ul>
-                        <li>Carbs: g</li>
-                        <li>Proteins: g</li>
-                        <li>Fats: g</li>
+                        <li>Carbs: {props.carbs}g</li>
+                        <li>Proteins: {props.protein}g</li>
+                        <li>Fats: {props.fats}g</li>
                     </ul>
                     </li>
 
                     <li>
                     <strong>Micronutrients:</strong>
                     <ul>
-                        <li>Vitamins & Minerals: </li>
-                        <li>Fiber: g</li>
-                        <li>Sugar: g</li>
+                        <li>Vitamins & Minerals: {props.vitMin}</li>
+                        <li>Fiber: {props.fiber}g</li>
+                        <li>Sugar: {props.sugar}g</li>
                     </ul>
                     </li>
 
-                    <li><strong>Water:</strong> oz</li>
+                    <li><strong>Water:</strong> {props.water}oz</li>
                 </ul> 
             </div>
         </>
