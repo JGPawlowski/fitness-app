@@ -57,6 +57,8 @@ export default function Main() {
                 <div className='left'>
                     <section className='top-left'>
                         <p>This section could have a chart(s) that include long-term goals, daily goals, etc.</p>
+
+                        <p>Can add in two different forms to enter in food/water and also enter in workouts</p>
                     </section>
                     
                     <section className='bottom-left'>
