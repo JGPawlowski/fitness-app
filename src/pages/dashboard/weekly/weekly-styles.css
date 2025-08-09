@@ -1,0 +1,43 @@
+.weekly-stats-container {
+    flex: 1;
+    text-align: center;
+    padding: 10px; 
+    text-align: center;
+    margin: 10px;
+}
+
+.nutrition-stats-container {
+    text-align: left;
+}
+
+.fitness-stats-container {
+    text-align: left;
+}
+
+.stats-card {
+    transition: opacity 500ms ease-in-out;
+    min-height: 200px;
+}
+
+.stats-btn {
+    width: fit-content;
+    height: fit-content;
+    font-weight: lighter;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background-color: #f15152;   
+    transition: 100ms;
+}
+
+.stats-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.stats-btn:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
