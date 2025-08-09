@@ -13,8 +13,8 @@ export default function Header() {
                 <Link to={'/'}>Home</Link>
                 <Link to={"/nutrition"}>Nutrition</Link>
                 <Link to={'/fitness'}>Fitness</Link>
-                <p>some link</p>
-                <Link to={'/user'}> {/* will link this to a users page later on */}
+                <Link to={'/progress-history'}>Overview</Link>
+                <Link to={'/user'}> {/* will link this to an individual users page later on */}
                     <img className='user-icon' src='/src/assets/user-line.svg' alt='user-icon'/>
                 </Link>
             </div>

@@ -1,12 +1,12 @@
-.main-container {
+.dashboard-container {
   display: flex;
 }
 
-main {
+main.main-dash {
   color: white;
 }
 
-section {
+.main-dashboard > section {
   border: 1px solid white;
   padding: 5px;
 }

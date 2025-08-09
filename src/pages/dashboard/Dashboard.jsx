@@ -89,8 +89,8 @@ export default function Dashboard() {
 
     return (
 
-        <main>
-            <div className='main-container'>
+        <main className='main-dash'>
+            <div className='dashboard-container'>
                 <div className='left'>
                     <section className='top-left'>
                       {/* <Doughnut data={data2} options={options2}/> */}
@@ -105,11 +105,6 @@ export default function Dashboard() {
                         <li>Form to enter in food and water that have been eaten/drank today</li>
                         <li>Show the splits on the day for calories/macros and total water consumed</li>
                       </ul>
-
-                      <form>
-                        <label htmlFor='food'>Enter in a food or drink:</label> <br/>
-                        <input name='food' placeholder='Enter in a food/drink'></input>
-                      </form>
 
                     </section>
                 </div>

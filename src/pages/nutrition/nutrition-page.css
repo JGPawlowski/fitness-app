@@ -1,0 +1,116 @@
+
+main.nutrition-main {
+    color: white;
+}
+
+.nutrition-main h1 {
+    text-align: center;
+}
+.nutrition-main h3 {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 1.3rem;
+}
+
+.nutrition-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Equal columns */
+    gap: 2rem;
+    min-height: 70vh;
+} 
+
+.nutrition-container-left, 
+.nutrition-container-right {
+    flex: 1;
+    border: solid white;
+    margin: 0 5px;
+    padding: 0 8px; 
+}
+
+
+/* use this if removing border on container or after adjusting the container height for cleaner ui */
+.nutrition-container-left .breakdown-item-card:last-child {
+    border: none;
+}
+
+.nutrition-breakdown {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.breakdown-item-card {
+    border-bottom: 1px solid white;
+}
+
+
+.breakdown-item-card h4 {
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.breakdown-item-card p {
+    text-align: center;
+}
+
+.nutrition-main h1,
+.nutrition-main h3,
+.breakdown-item-card h4 {
+    font-family: Bebas Neue;
+}
+
+.enter-food-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    border-bottom: solid white;
+    padding: 15px 0px;
+    margin: 20px 0px;
+}
+
+.enter-food-form > input,
+.enter-food-form > select {
+    border-radius: 3px;
+    border: none;
+}
+
+.enter-food-form input {
+    height: 30px;
+    padding: 8px;
+    width: 300px;
+}
+
+.enter-food-form > select {
+    height: 20px;
+    width: 200px;
+    padding-left: 5px
+}
+
+.enter-food-form > button {
+    border: none;
+    color: white;
+    border-radius: 8px;
+    background-color: #f15152;
+    margin-top: 18px;
+    width: 110px;
+    height: 25px;
+}
+.enter-food-form > button:hover {
+    cursor: pointer;
+}
+
+.get-recipe {
+    padding: 5px;
+}
+
+
+
+
+/* Stack on mobile */
+@media (max-width: 768px) {
+  .nutrition-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

@@ -1,5 +1,6 @@
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
 
+// pages and components
 import Header from '/src/pages/components/header/Header'
 import Footer from '/src/pages/components/footer/Footer'
 import Dashboard from '/src/pages/dashboard/Dashboard'
@@ -7,6 +8,7 @@ import NotFoundPage from '/src/pages/not-found/NotFoundPage'
 import NutritionPage from './pages/nutrition/NutritionPage'
 import FitnessPage from './pages/fitness/FitnessPage'
 import UserPage from './pages/user/UserPage'
+import ProgressHistory from './pages/ProgressHistoryPage/ProgressHistory'
 
 function Layout() {
   return (
@@ -44,7 +46,13 @@ const router = createBrowserRouter([
       {
         path: '/user',
         element: <UserPage />
+      },
+
+      {
+        path: '/progress-history',
+        element: <ProgressHistory />
       }
+
     ]
   }
 ]);
