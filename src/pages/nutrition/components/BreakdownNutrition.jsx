@@ -11,7 +11,7 @@ export default function NutritionBreakdown() {
                 <BreakdownCard
                     title='Calories:'
                     total={5}
-                    goal={10}
+                    goal={11}
                     description='Summary of calories for the day and how they relate to goal % or other metrics'
                  />
 

@@ -54,7 +54,8 @@ main.nutrition-main {
 
 .nutrition-main h1,
 .nutrition-main h3,
-.breakdown-item-card h4 {
+.breakdown-item-card h4,
+.suggested-recipe-container h2 {
     font-family: Bebas Neue;
 }
 
@@ -69,19 +70,17 @@ main.nutrition-main {
     margin: 20px 0px;
 }
 
-.enter-food-form > input,
-.enter-food-form > select {
-    border-radius: 3px;
+.food-input {
     border: none;
-}
-
-.enter-food-form input {
+    border-radius: 3px;
     height: 30px;
     padding: 8px;
     width: 300px;
 }
 
-.enter-food-form > select {
+.select-meal {
+    border: none;
+    border-radius: 5px;
     height: 20px;
     width: 200px;
     padding-left: 5px
@@ -95,14 +94,83 @@ main.nutrition-main {
     margin-top: 18px;
     width: 110px;
     height: 25px;
-}
-.add-food-btn:hover {
     cursor: pointer;
 }
 
 .get-recipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 5px;
 }
+
+.suggested-recipe-container {
+    margin: 20px 5px;
+    padding: 5px;
+    color: white;
+    border: 1px solid white;
+    text-align: center;
+    width: 66%;
+    justify-self: center;
+}
+
+.suggested-recipe-container h2 {
+    text-decoration: underline;
+}
+
+.ingredients-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 20px;
+}
+
+.ingredient-input {
+    border-radius: 3px;
+    border: none;
+    height: 30px;
+    padding: 8px;
+    width: 300px;
+}
+
+.ingredient-input-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.ingredient-btn {
+    border: none;
+    border-radius: 5px;
+    padding: 8px;
+    color: white;
+    background-color: #141421;
+    cursor: pointer;
+}
+
+.ingredients-list {
+    font-size: 1.2rem;
+    transform: translateX(-175px);
+}
+
+.ingredients-label {
+    margin-bottom: 10px;
+}
+
+.sub-ingredients-btn {
+    background-color: #f15152;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    border: none;
+    padding: 8px;
+    margin: 10px 0px;
+    cursor: pointer;
+}
+
 
 
 
