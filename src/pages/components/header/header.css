@@ -20,9 +20,12 @@ header {
 }
 
 .user-icon {
-  margin: 5px;
-  width: 18px;
-  height: 18px;
+  margin: 5px 5px 5px 50px;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  border: 1px dotted white;
+  border-radius: 100%;
 }
 
 .info-box {

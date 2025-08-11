@@ -16,6 +16,7 @@ export default function NutritionPage() {
         <main className='nutrition-main'>
             
             <h1>Nutrition Overview</h1>
+            
             <div className='nutrition-container'>
                 
                 <BreakdownNutrition />

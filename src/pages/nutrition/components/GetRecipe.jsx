@@ -44,12 +44,18 @@ export default function GetRecipe() {
             </form>
 
             {/* display the ingredients that the user entered */}
-            <ul className='ingredients-list' aria-live='polite'>
-                {ingredientsListItems}
-            </ul>
+            { ingredients.length > 0 &&
+                <>
+                    <h3 style={{marginBottom: '0px'}}>Ingredients on hand:</h3>
+                    <ul className='ingredients-list' aria-live='polite'>
+                        {ingredientsListItems}
+                    </ul>
+                </>
+            }
+            
 
 
-            {/* give the ability to submit ingredients once there is enough in the array */}
+            {/* give the ability to submit ingredients once there is enough ingredients in the array */}
             {
                 ingredients.length > 3 &&
                 <button className='sub-ingredients-btn'>Submit Ingredients</button>
