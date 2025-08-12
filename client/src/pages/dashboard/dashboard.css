@@ -6,7 +6,7 @@ main.main-dash {
   color: white;
 }
 
-.main-dashboard > section {
+.main-dash section {
   border: 1px solid white;
   padding: 5px;
 }
