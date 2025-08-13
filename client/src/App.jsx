@@ -12,8 +12,8 @@ import NutritionPage from './pages/nutrition/NutritionPage'
 import FitnessPage from './pages/fitness/FitnessPage'
 import UserPage from './pages/user/UserPage'
 import ProgressHistory from './pages/progress-history/ProgressHistory'
-import Login from './pages/login/Login'
-import Signup from './pages/signup/SIgnup'
+import Login from './pages/auth-pages/login/Login'
+import Signup from './pages/auth-pages/signup/SIgnup'
 
 
 function Layout() {

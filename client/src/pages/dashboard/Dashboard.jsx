@@ -89,7 +89,7 @@ export default function Dashboard() {
 
     return (
 
-        <main className='main-dash'>
+        <div className='main-dash'>
             <div className='dashboard-container'>
                 <div className='left'>
                     <section className='top-left'>
@@ -120,7 +120,7 @@ export default function Dashboard() {
                     <p>Could show progression with an ability to click into a month and see a breakdown of what was done in that month</p>
                     <Line datasetIdKey="id" data={data} options={options} />
                 </section>
-        </main>
+        </div>
     )
 }
 

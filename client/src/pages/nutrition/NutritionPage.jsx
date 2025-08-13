@@ -13,7 +13,7 @@ export default function NutritionPage() {
     }
 
     return (
-        <main className='nutrition-main'>
+        <div className='nutrition-main'>
             
             <h1>Nutrition Overview</h1>
             
@@ -31,6 +31,6 @@ export default function NutritionPage() {
                 </section>
             )}
  
-        </main>
+        </div>
     )
 }
