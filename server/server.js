@@ -1,32 +1,36 @@
-import express from "express";
-import dotenv from "dotenv";
-import pkg from "pg";
+import express from 'express'
+import pkg from 'pg'
+import dotenv from 'dotenv'
 
-dotenv.config();
-const { Pool } = pkg;
+dotenv.config()
+
+const { Pool } = pkg
 
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASS,
-  port: process.env.DB_PORT,
-});
+  host: process.env.PGHOST,
+  user: process.env.PGUSER,
+  password: process.env.PGPASSWORD,
+  database: process.env.PGDATABASE,
+  port: process.env.PGPORT,
+})
 
-const app = express();
-app.use(express.json());
+const app = express()
+const PORT = process.env.PORT || 3000
 
-// Example route
-app.get("/users", async (req, res) => {
+app.use(express.json())
+
+// Test route
+app.get('/', async (req, res) => {
   try {
-    const result = await pool.query("SELECT * FROM users");
-    res.json(result.rows);
+    const result = await pool.query('SELECT NOW()')
+    res.json({ message: 'Database connected!', time: result.rows[0] })
   } catch (err) {
-    console.error(err);
-    res.status(500).send("Server Error");
+    console.error(err)
+    res.status(500).json({ error: 'Database connection failed' })
   }
-});
+})
 
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
-});
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
+
