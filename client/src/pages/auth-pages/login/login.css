@@ -1,5 +1,6 @@
 div.login-main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
@@ -8,6 +9,14 @@ div.login-main {
 }
 
 .login-container {
+    padding-top: 50px;
+}
+
+.site-name.login {
+    font-size: 4rem;
+}
+
+.login-form {
     gap: 1rem;
     display: flex;
     flex-direction: column;
@@ -20,6 +29,7 @@ div.login-main {
     color: white;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+
 }
 
 .login-label {

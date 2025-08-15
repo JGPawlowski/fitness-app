@@ -2,9 +2,20 @@ import './nutrition-page.css'
 import BreakdownNutrition from './components/BreakdownNutrition'
 import InputNutrition from './components/InputNutrition'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function NutritionPage() {
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/nutrition') // adjust port if needed
+        .then(res => res.json())
+        .then(data => setData(data))
+        .catch(err => console.error(err));
+    }, []);
+    console.log(data)
+
     // if the recipe is showing or not --- will use whenever setting up useRef
     const [recipe, setRecipe] = useState(true)
 
