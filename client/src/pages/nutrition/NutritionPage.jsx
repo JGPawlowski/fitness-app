@@ -6,15 +6,22 @@ import { useState, useEffect } from 'react'
 
 export default function NutritionPage() {
 
-    const [data, setData] = useState([]);
+    // test user
+    const user_id = 1
 
+    const [data, setData] = useState(null)
+    
     useEffect(() => {
-        fetch('http://localhost:5000/nutrition') // adjust port if needed
-        .then(res => res.json())
-        .then(data => setData(data))
-        .catch(err => console.error(err));
-    }, []);
-    console.log(data)
+        fetch(`/api/nutrition/${user_id}`)   // 🔑 calls backend route
+            .then((res) => res.json())
+            .then((data) => setData(data))
+            .catch((err) => console.error(err));
+        }, []); 
+
+        console.log(data)
+       
+       
+    
 
     // if the recipe is showing or not --- will use whenever setting up useRef
     const [recipe, setRecipe] = useState(true)
@@ -26,11 +33,11 @@ export default function NutritionPage() {
     return (
         <div className='nutrition-main'>
             
-            <h1>Nutrition Overview</h1>
+            <h1>Nutrition Overview {data ? `for ${data.name}` : ''}</h1>
             
             <div className='nutrition-container'>
                 
-                <BreakdownNutrition />
+                <BreakdownNutrition {...data} />
                 <InputNutrition handleRecipe={handleRecipe} /> {/* show the recipe */}
                 
             </div>

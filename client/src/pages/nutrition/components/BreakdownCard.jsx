@@ -4,11 +4,25 @@
 export default function BreakdownCard(props) {
 
 
+    
+
     return (
         
         <div className='breakdown-item-card'>
             <h4>{props.title}</h4>
             <p>{props.description}</p>
+            
+            {props.calories ? <p>{props.calories}</p> : null}
+
+            {props.list ? 
+            <ul>
+                <li>Carbs: {props.list.sugar}g</li>
+                <li>Fats: {props.list.fats}g</li>
+                <li>Sugar: {props.list.sugar}g</li>
+            </ul> : null
+            }
+            
+            
             {
                 // conditional rendering to only display if there is a goal set for this specific category
             props.goal ? 

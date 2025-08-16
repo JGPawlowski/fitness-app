@@ -1,36 +1,18 @@
-import express from 'express'
-import pkg from 'pg'
-import dotenv from 'dotenv'
+import express from 'express';
+import cors from 'cors';
+import nutritionRouter from './routes/nutrition.js';
 
-dotenv.config()
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-const { Pool } = pkg
+app.use(cors());
+app.use(express.json());
 
-const pool = new Pool({
-  host: process.env.PGHOST,
-  user: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
-  database: process.env.PGDATABASE,
-  port: process.env.PGPORT,
-})
-
-const app = express()
-const PORT = process.env.PORT || 3000
-
-app.use(express.json())
-
-// Test route
-app.get('/', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT NOW()')
-    res.json({ message: 'Database connected!', time: result.rows[0] })
-  } catch (err) {
-    console.error(err)
-    res.status(500).json({ error: 'Database connection failed' })
-  }
-})
+// Namespace API routes with /api
+app.use('/api/nutrition', nutritionRouter);
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+  console.log(`Server running on port ${PORT}`);
+});
+
 
