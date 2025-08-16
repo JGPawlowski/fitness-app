@@ -5,26 +5,25 @@ import InputNutrition from './components/InputNutrition'
 import { useState, useEffect } from 'react'
 
 export default function NutritionPage() {
+    // if the recipe is showing or not --- will use whenever setting up useRef
+    const [recipe, setRecipe] = useState(true)
+    const [data, setData] = useState(null) // fetch the data from the database
 
-    // test user
+    // test user and date for fetching data
     const user_id = 1
+    const todaysDate = new Date().toISOString().split('T')[0];
 
-    const [data, setData] = useState(null)
     
     useEffect(() => {
-        fetch(`/api/nutrition/${user_id}`)   // 🔑 calls backend route
+        fetch(`/api/nutrition/${user_id}?date=${todaysDate}`)   // 🔑 calls backend route
             .then((res) => res.json())
             .then((data) => setData(data))
             .catch((err) => console.error(err));
-        }, []); 
+        }, [user_id, todaysDate]); 
 
         console.log(data)
        
        
-    
-
-    // if the recipe is showing or not --- will use whenever setting up useRef
-    const [recipe, setRecipe] = useState(true)
 
     const handleRecipe = () => {
         setRecipe(prev => !prev)

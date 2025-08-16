@@ -14,11 +14,12 @@ export default function BreakdownCard(props) {
             
             {props.calories ? <p>{props.calories}</p> : null}
 
-            {props.list ? 
+            {props.macros ? 
             <ul>
-                <li>Carbs: {props.list.sugar}g</li>
-                <li>Fats: {props.list.fats}g</li>
-                <li>Sugar: {props.list.sugar}g</li>
+                {Object.entries(props.macros).map(([key, value]) => (
+                    <li key={key}>{key}: {value}</li>
+                ))}
+
             </ul> : null
             }
             
