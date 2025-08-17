@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import nutritionRouter from './routes/nutrition.js';
+import getFood from './routes/get-food.js'
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -19,6 +20,9 @@ app.use((err, req, res, next) => {
 
 // Namespace API routes with /api
 app.use('/api/nutrition', nutritionRouter);
+
+// External food search (USDA)
+app.use('/api/get-foods', getFood);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

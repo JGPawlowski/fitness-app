@@ -9,6 +9,14 @@ export default function NutritionPage() {
     const [recipe, setRecipe] = useState(true)
     const [data, setData] = useState(null) // fetch the data from the database
 
+    async function getFood() {
+        const res = await fetch(`/api/get-foods/search?food=apple`);
+        const foods = await res.json();
+        console.log(foods); // array of unbranded USDA foods
+    }
+
+    getFood()
+
     // test user and date for fetching data
     const user_id = 1
     const todaysDate = new Date().toISOString().split('T')[0];
