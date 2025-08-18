@@ -11,7 +11,7 @@ export default function NutritionBreakdown(props) {
 
         setTimeout(() => {
             setHasData(prev => !prev)
-        }, 3000)
+        }, 350)
 
     }, [props.data])
 

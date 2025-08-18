@@ -7,45 +7,99 @@ import { useState, useEffect } from 'react'
 export default function NutritionPage() {
     // if the recipe is showing or not --- will use whenever setting up useRef
     const [recipe, setRecipe] = useState(true)
-    const [data, setData] = useState(null) // fetch the data from the database
-
-    async function getFood() {
-        const res = await fetch(`/api/get-foods/search?food=apple`);
-        const foods = await res.json();
-        console.log(foods); // array of unbranded USDA foods
-    }
-
-    getFood()
-
-    // test user and date for fetching data
-    const user_id = 1
-    const todaysDate = new Date().toISOString().split('T')[0];
+    const [foodItem, setFoodItem] = useState('')
+    const [mealTime, setMealTime] = useState('')
+    const [apiData, setApiData] = useState(null) // fetch the data from the database
 
     
     useEffect(() => {
-        fetch(`/api/nutrition/${user_id}?date=${todaysDate}`)   // 🔑 calls backend route
-            .then((res) => res.json())
-            .then((data) => setData(data))
-            .catch((err) => console.error(err));
+        if (!foodItem) return
+        
+        console.log(`${foodItem} at ${mealTime}`)
+        
+        // fetch(`/api/get-foods/search?food=apple`)
+        //     .then((res) => res.json())
+        //     .then((data) => console.log(data))
+        //     .catch((err) => console.error(err))
+        
+        async function getFood() {
+            try {
+                
+                const res = await fetch(`/api/get-foods/search?food=${foodItem}`)
+                const data = await res.json()
+                console.log(data)
+
+                // data.foods.forEach(item => {
+                //     console.log(item.foodNutrients.nutrientName)
+                // })
+
+                const nutrients = data.foods.map(item => item.foodNutrients)
+                const test = nutrients[0]
+                // console.log(test[0].nutrientName)
+                console.log(nutrients)
+
+
+            } catch(err) {
+                console.log(err)
+            }
+        }
+
+        getFood()
+    },[foodItem, mealTime])
+
+    // test user and date for fetching data
+    const user_id = 1
+    const today = new Date();
+    const todaysDate = today.toLocaleDateString("en-CA"); // format date
+
+    
+    useEffect(() => {
+        
+        async function getDB() {
+            try{
+                
+                const res = await fetch(`/api/nutrition/${user_id}?date=${todaysDate}`)   // call backend route
+                // non 200 responses
+                if (!res.ok) throw new Error("Network response was not ok")
+                    
+                const data = await res.json()
+                setApiData(data)
+
+            } catch(err) {
+                console.error(err)
+            }
+        }
+
+        getDB()
         }, [user_id, todaysDate]); 
 
-        console.log(data)
-       
+        useEffect(() => {
+            console.log(apiData)
+        }, [apiData])
        
 
     const handleRecipe = () => {
         setRecipe(prev => !prev)
     }
 
+    const submitFoodHandler = ({food, meal}) => {
+        setFoodItem(food)
+        setMealTime(meal)
+        // wont work because state is asynchronous
+        // console.log(foodItem)
+        // console.log(mealTime)
+    }
+
+
     return (
         <div className='nutrition-main'>
             
-            <h1>Nutrition Overview {data ? `for ${data.name}` : ''}</h1>
+            <h1>Nutrition Overview {apiData ? `for ${apiData.name}` : ''}</h1>
             
             <div className='nutrition-container'>
                 
-                <BreakdownNutrition {...data} />
-                <InputNutrition handleRecipe={handleRecipe} /> {/* show the recipe */}
+                <BreakdownNutrition {...apiData} />
+                <InputNutrition submitFoodHandler={submitFoodHandler} handleRecipe={handleRecipe} /> {/* show the recipe */}
                 
             </div>
 
