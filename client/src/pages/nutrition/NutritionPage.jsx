@@ -29,14 +29,16 @@ export default function NutritionPage() {
                 const data = await res.json()
                 console.log(data)
 
-                // data.foods.forEach(item => {
-                //     console.log(item.foodNutrients.nutrientName)
-                // })
+                // get the nutrient and the amount
+                // prep to send to the database (work on more efficient way to achieve this or a way to separate this out)
+                for (const food of data.foods) {
+                    for (const nutrient of food.foodNutrients) {
+                        if (nutrient.nutrientName === 'Protein') {
+                            console.log(`${nutrient.nutrientName}: ${nutrient.nutrientNumber}${nutrient.unitName}`)
+                        }
+                    }
+                }
 
-                const nutrients = data.foods.map(item => item.foodNutrients)
-                const test = nutrients[0]
-                // console.log(test[0].nutrientName)
-                console.log(nutrients)
 
 
             } catch(err) {
