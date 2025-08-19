@@ -7,16 +7,21 @@ export default function EnterFoodForm({ submitFoodHandler }) {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        // console.log(item)
-        // console.log(mealTime)
-        submitFoodHandler({food:item, meal:mealTime})
+        submitFoodHandler(
+            { 
+                food:item,
+                meal:mealTime
+            })
+            setItem('')
+            setMealTime('')
     }
 
     return (
         <>
             <h3>Enter in a food or drink</h3>
             <form onSubmit={handleSubmit} className='enter-food-form'>
-                <select className="select-meal" name='mealTime' onChange={(e) => setMealTime(e.target.value)}required>
+                <select 
+                className="select-meal" name='mealTime' onChange={(e) => setMealTime(e.target.value)} value={mealTime} required>
                     <option value={''}>Choose a meal type</option>
                     <option value={'breakfast'}>Breakfast</option>
                     <option value={'lunch'}>Lunch</option>
@@ -24,12 +29,14 @@ export default function EnterFoodForm({ submitFoodHandler }) {
                     <option value={'snack'}>Snack</option>
                 </select>
                 <input
+                    value={item}
                     className='food-input'
                     onChange={(e) => setItem(e.target.value)}
                     type='text'
                     placeholder='e.g. chicken'
                     name='foodEntry'
                     aria-label='Add food or drink'
+                    required
                     />
                 <button className='add-food-btn'>Add Item</button>
             </form>
