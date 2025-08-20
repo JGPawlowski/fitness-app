@@ -26,9 +26,10 @@
 // }
 export const searchFood = async (req, res) => {
   try {
-    const { food } = req.query;
-    if (!food) return res.status(400).json({ error: 'Food query is required' });
+    const { food } = req.query
+    if (!food) return res.status(400).json({ error: 'Food query is required' })
 
+      // post request to the nutritionix NLP endpoint 
     const response = await fetch('https://trackapi.nutritionix.com/v2/natural/nutrients', {
       method: 'POST',
       headers: {
@@ -37,18 +38,19 @@ export const searchFood = async (req, res) => {
         'x-app-key': process.env.NUTRITIONIX_API_KEY,
       },
       body: JSON.stringify({ query: food }),
-    });
+    })
 
-    const data = await response.json();
+    // parse the json response from the api
+    const data = await response.json()
 
     if (!data.foods || !Array.isArray(data.foods)) {
       // If API response doesn't have a foods array
-      return res.status(500).json({ error: 'Invalid response from Nutritionix', details: data });
+      return res.status(500).json({ error: 'Invalid response from Nutritionix', details: data })
     }
 
-    res.json(data.foods);
+    res.json(data.foods)
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Server error', details: err.message });
+    console.error(err)
+    res.status(500).json({ error: 'Server error', details: err.message })
   }
-};
+}

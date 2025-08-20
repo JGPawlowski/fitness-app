@@ -10,6 +10,14 @@ export default function NutritionPage() {
     const [foodItem, setFoodItem] = useState('')
     const [mealTime, setMealTime] = useState('')
     const [apiData, setApiData] = useState(null) // fetch the data from the database
+    const [nutrients, setNutrients] = useState({
+        Calories: 0,
+        Sugar: 0,
+        Fiber: 0,
+        Fats: 0,
+        Carbs: 0,
+        Protein: 0,
+    })
 
     
     useEffect(() => {
@@ -20,31 +28,50 @@ export default function NutritionPage() {
         // testing 
         console.log(`${foodItem} at ${mealTime}`)
         
-        /* GET THE FOOD DATA FROM THE USDA API --- USING THE FORM TO ENTER IN FOOD BEING EATEN IN A DAY */
+        /* GET THE FOOD DATA FROM THE NUTRITIONIX API --- USING THE FORM TO ENTER IN FOOD BEING EATEN IN A DAY */
         async function getFood() {
+
             try {
                 const res = await fetch(`/api/get-foods/search?food=${foodItem}`)
                 const data = await res.json()
-                console.log(data)
 
-                // get the nutrient and the amount
-                // prep to send to the database (work on more efficient way to achieve this or a way to separate this out)
-                for (const food of data.foods) {
-                    for (const nutrient of food.foodNutrients) {
-                        if (nutrient.nutrientName === 'Protein') {
-                            console.log(`${nutrient.nutrientName}: ${nutrient.nutrientNumber}${nutrient.unitName}`)
-                        }
-                    }
-                }
-
+                // console.log(data)
+                
+                // set the nutrients and the amount
+                setNutrients({
+                    Calories: 
+                        data[0].nf_calories === null || data[0].nf_calories === undefined ?
+                        0 : Math.floor(Number(data[0].nf_calories)),
+                    Protein:
+                        data[0].nf_protein === null || data[0].nf_protein === undefined ? 
+                        0 : Number(data[0].nf_protein),
+                    Carbs: 
+                        data[0].nf_total_carbohydrates === null || data[0].nf_total_carbohydrates === undefined ?
+                        0 : Number(data[0].nf_total_carbohydrates),
+                    Fats:
+                        data[0].nf_total_fat === null || data[0].nf_total_fat === undefined ? 
+                        0 : Number(data[0].nf_total_fat),
+                    Fiber:
+                        data[0].nf_dietary_fiber === null || data[0].nf_dietary_fiber === undefined ?  
+                        0 : Number(data[0].nf_dietary_fiber),
+                    Sugar: 
+                        data[0].nf_sugars === null || data[0].nf_sugars === undefined ? 
+                        0 : Number(data[0].nf_sugars)
+                })
 
             } catch(err) {
                 console.log(err)
             }
         }
 
+        
+
         getFood()
     },[foodItem, mealTime])
+
+    useEffect(() => {
+        console.log(nutrients)
+    }, [nutrients])
 
     // test user and date for fetching data
     const user_id = 1
@@ -69,12 +96,6 @@ export default function NutritionPage() {
         }
         getDB()
         }, [user_id, todaysDate]); 
-
-
-        /** TESTING **/
-        useEffect(() => {
-            console.log(apiData)
-        }, [apiData])
        
 
     const handleRecipe = () => {
@@ -86,6 +107,19 @@ export default function NutritionPage() {
         setMealTime(meal)
     }
 
+    const submitToDB = async () => {
+        try {
+            const res = await fetch("/api/nutrition/add", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ nutrients })
+            })
+            const result = await res.json()
+            console.log(result.message)
+        } catch (err) {
+            console.error(err)
+        }
+    }
 
     return (
         <div className='nutrition-main'>
@@ -105,7 +139,9 @@ export default function NutritionPage() {
                     <p>This section will only show when there is a recipe otherwise it will be taken out of the dom</p>
                 </section>
             )}
- 
+
+            <button onClick={submitToDB}>Submit to the database</button>
+
         </div>
     )
 }

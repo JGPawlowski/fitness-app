@@ -1,6 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import nutritionInfoRouter from './routes/nutritionInfoRoute.js'
+import nutritionInsertRouter from './routes/nutritionInsertRoute.js'
 import getFood from './routes/getFoodRoute.js'
 
 const app = express()
@@ -18,8 +19,9 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Something went wrong!' })
 });
 
-// Namespace API routes with /api
-app.use('/api/nutrition', nutritionInfoRouter)
+//routes with /api
+app.use('/api/nutrition', nutritionInfoRouter) // GET user info 
+app.use('/api/nutrition', nutritionInsertRouter) // POST nutrition info
 
 // External food search (USDA)
 app.use('/api/get-foods', getFood)

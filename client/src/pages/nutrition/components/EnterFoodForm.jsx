@@ -4,6 +4,7 @@ import { useState } from "react"
 export default function EnterFoodForm({ submitFoodHandler }) {
     const [item, setItem] = useState('')
     const [mealTime, setMealTime] = useState('')
+    // const [input, setInput] = useState(true)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -28,16 +29,19 @@ export default function EnterFoodForm({ submitFoodHandler }) {
                     <option value={'dinner'}>Dinner</option>
                     <option value={'snack'}>Snack</option>
                 </select>
+
                 <input
                     value={item}
                     className='food-input'
                     onChange={(e) => setItem(e.target.value)}
                     type='text'
-                    placeholder='e.g. chicken'
+                    placeholder='e.g. 4 oz of chicken breast'
                     name='foodEntry'
                     aria-label='Add food or drink'
                     required
-                    />
+                />
+
+
                 <button className='add-food-btn'>Add Item</button>
             </form>
         </>
