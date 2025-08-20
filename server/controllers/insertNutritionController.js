@@ -7,7 +7,8 @@ export const insertNutritionController = async (req, res) => {
     if (!nutrients) return res.status(400).json({ error: 'Nutrients are required' })
 
     const { Calories, Protein, Fats, Carbs, Fiber, Sugar } = nutrients
-    const today = new Date().toISOString().split('T')[0] // 'YYYY-MM-DD'
+    const today = new Date();
+    const todaysDate = today.toLocaleDateString("en-CA");
 
     const existing = await pool.query(
       `select * from nutrition where user_id = $1 and entry_date = $2;`,
