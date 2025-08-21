@@ -4,7 +4,6 @@ import { useState } from "react"
 export default function EnterFoodForm({ submitFoodHandler }) {
     const [item, setItem] = useState('')
     const [mealTime, setMealTime] = useState('')
-    // const [input, setInput] = useState(true)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -21,6 +20,7 @@ export default function EnterFoodForm({ submitFoodHandler }) {
         <>
             <h3 className='nutrition-container-h3'>Enter in a food or drink</h3>
             <form onSubmit={handleSubmit} className='enter-food-form'>
+
                 <select 
                 className="select-meal" name='mealTime' onChange={(e) => setMealTime(e.target.value)} value={mealTime} required>
                     <option value={''}>Choose a meal type</option>
@@ -40,9 +40,9 @@ export default function EnterFoodForm({ submitFoodHandler }) {
                     aria-label='Add food or drink'
                     required
                 />
-
-
-                <button className='add-food-btn'>Add Item</button>
+                
+                
+                <button className='add-food-btn'>Add Item</button> 
             </form>
         </>
     )

@@ -1,8 +1,8 @@
 
 footer {
+  color: #FAF9F6;
   margin-top: 75px;
   display: flex;
   justify-content: space-around;
   text-decoration: underline;
-  color: gray;
 }

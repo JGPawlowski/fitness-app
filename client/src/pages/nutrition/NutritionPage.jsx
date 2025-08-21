@@ -143,8 +143,13 @@ export default function NutritionPage() {
             <div className='nutrition-container'>
                 
                 <BreakdownNutrition {...apiData} />
-                <InputNutrition submitFoodHandler={submitFoodHandler} handleRecipe={handleRecipe} /> {/* show the recipe */}
+                <InputNutrition 
+                    submitFoodHandler={submitFoodHandler} 
+                    handleRecipe={handleRecipe}
+                /> 
                 
+                {/* will move this later on */}
+                <button onClick={submitToDB}>Submit to the database</button>
             </div>
 
             { recipe && (
@@ -154,7 +159,6 @@ export default function NutritionPage() {
                 </section>
             )}
 
-            <button onClick={submitToDB}>Submit to the database</button>
 
         </div>
     )

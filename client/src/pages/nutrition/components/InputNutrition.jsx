@@ -6,7 +6,9 @@ export default function InputNutrition({ submitFoodHandler }) {
     return (
         <div className='nutrition-container-right'>
 
-            <EnterFoodForm submitFoodHandler={submitFoodHandler} /> 
+            <EnterFoodForm 
+                submitFoodHandler={submitFoodHandler} 
+            /> 
             <GetRecipe />
 
         </div>

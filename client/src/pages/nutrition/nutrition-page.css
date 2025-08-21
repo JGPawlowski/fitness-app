@@ -13,7 +13,7 @@ select {
     font-size: 2rem;
     margin: 10px 0px 25px 0px;
 }
-.nutrition-container-h3 {
+.nutrition-container-h3{
     text-align: center;
     text-decoration: underline;
     font-size: 1.6rem;
@@ -126,6 +126,7 @@ select {
 }
 
 .suggested-recipe-container {
+    background-color: #F9F6EE;
     margin: 20px 5px;
     padding: 5px;
     color: #FAF9F6;
@@ -137,7 +138,14 @@ select {
 }
 
 .suggested-recipe-container h2 {
+    text-align: center;
+    color: #141421;
     text-decoration: underline;
+    font-size: 1.6rem;
+}
+
+.suggested-recipe-container p {
+    color: #141421;
 }
 
 .ingredients-form {
