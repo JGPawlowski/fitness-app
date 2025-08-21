@@ -91,7 +91,7 @@ export default function NutritionPage() {
             }
         }
         getDB()
-        }, [user_id, todaysDate]); 
+        }, [user_id, todaysDate, nutrients]); 
        
 
     const handleRecipe = () => {
