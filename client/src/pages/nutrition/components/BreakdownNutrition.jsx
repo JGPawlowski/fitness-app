@@ -5,8 +5,6 @@ import BreakdownCard from "./BreakdownCard";
 export default function NutritionBreakdown(props) {
     const [hasData, setHasData] = useState(false)
 
-
-
     useEffect(() => {
 
         setTimeout(() => {
@@ -14,7 +12,6 @@ export default function NutritionBreakdown(props) {
         }, 350)
 
     }, [props.data])
-
 
 
     return (

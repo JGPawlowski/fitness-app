@@ -46,8 +46,8 @@ export default function NutritionPage() {
                         data[0].nf_protein === null || data[0].nf_protein === undefined ? 
                         0 : Number(data[0].nf_protein),
                     Carbs: 
-                        data[0].nf_total_carbohydrates === null || data[0].nf_total_carbohydrates === undefined ?
-                        0 : Number(data[0].nf_total_carbohydrates),
+                        data[0].nf_total_carbohydrate === null || data[0].nf_total_carbohydrate === undefined ?
+                        0 : Number(data[0].nf_total_carbohydrate),
                     Fats:
                         data[0].nf_total_fat === null || data[0].nf_total_fat === undefined ? 
                         0 : Number(data[0].nf_total_fat),
@@ -64,19 +64,14 @@ export default function NutritionPage() {
             }
         }
 
-        
-
         getFood()
-    },[foodItem, mealTime])
-
-    useEffect(() => {
-        console.log(nutrients)
-    }, [nutrients])
+    }, [foodItem, mealTime])
+    
 
     // test user and date for fetching data
     const user_id = 1
-    const today = new Date();
-    const todaysDate = today.toLocaleDateString("en-CA"); // format date and timezone 
+    const today = new Date()
+    const todaysDate = today.toLocaleDateString("en-CA") // format date and timezone 
 
     
     /** GET THE USER DATA FROM THE POSTGRES DATABASE **/

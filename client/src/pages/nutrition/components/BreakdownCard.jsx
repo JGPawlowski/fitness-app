@@ -1,9 +1,20 @@
-
+import { useState, useEffect } from "react"
 
 
 export default function BreakdownCard(props) {
 
+    const [calories, setCalories] = useState(props.calories ?? 0)
+    const [macros, setMacros] = useState(props.macros ?? {})
 
+
+    /* SYNC THIS STATE WITH THE STATE FROM ABOVE (AND FROM THE DATABASE) */
+    useEffect(() => {
+        setCalories(props.calories)
+    }, [props.calories])
+
+    useEffect(() => {
+        setMacros(props.macros)
+    }, [props.macros])
     
 
     return (
@@ -12,13 +23,15 @@ export default function BreakdownCard(props) {
             <h4>{props.title}</h4>
             <p>{props.description}</p>
             
-            {props.calories ? <p>{props.calories}</p> : null}
+            {calories ? <p>{calories}</p> : null}
 
-            {props.macros ? 
+            { macros ? 
             <ul>
-                {Object.entries(props.macros).map(([key, value]) => (
-                    <li key={key}>{key}: {value}</li>
-                ))}
+
+                <li>Carbs: {macros.carbs}</li>
+                <li>Protein: {macros.protein}</li>
+                <li>Fats: {macros.fats}</li>
+                <li>Sugar: {macros.sugar}</li>
 
             </ul> : null
             }
