@@ -19,7 +19,7 @@ export default function EnterFoodForm({ submitFoodHandler }) {
 
     return (
         <>
-            <h3>Enter in a food or drink</h3>
+            <h3 className='nutrition-container-h3'>Enter in a food or drink</h3>
             <form onSubmit={handleSubmit} className='enter-food-form'>
                 <select 
                 className="select-meal" name='mealTime' onChange={(e) => setMealTime(e.target.value)} value={mealTime} required>

@@ -23,7 +23,7 @@ export default function BreakdownCard(props) {
             <h4>{props.title}</h4>
             <p>{props.description}</p>
             
-            {calories ? <p>{calories}</p> : null}
+            {calories ? <p>Calories: {calories}</p> : null}
 
             { macros ? 
             <ul>

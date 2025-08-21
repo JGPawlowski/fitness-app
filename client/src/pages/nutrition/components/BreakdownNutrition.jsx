@@ -16,7 +16,7 @@ export default function NutritionBreakdown(props) {
 
     return (
         <div className='nutrition-container-left'>
-            <h3>Breakdown</h3>
+            <h3 className='nutrition-container-h3'>Breakdown</h3>
 
             <section className='nutrition-breakdown'>
                 {hasData ? 

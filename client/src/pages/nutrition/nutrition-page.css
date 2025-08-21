@@ -1,6 +1,6 @@
 
 div.nutrition-main {
-    color: white;
+    color: #141421;
 }
 
 input,
@@ -10,13 +10,14 @@ select {
 
 .nutrition-main h1 {
     text-align: center;
+    font-size: 2rem;
     margin: 10px 0px 25px 0px;
 }
-.nutrition-main h3 {
+.nutrition-container-h3 {
     text-align: center;
     text-decoration: underline;
-    font-size: 1.3rem;
-}
+    font-size: 1.6rem;
+} 
 
 .nutrition-container {
     display: grid;
@@ -28,8 +29,10 @@ select {
 
 .nutrition-container-left, 
 .nutrition-container-right {
+    /* background-color: #EDEADE; */
+    background-color: #FAF9F6;
     flex: 1;
-    border: solid white;
+    border: solid #141421;
     border-radius: 30px;
     margin: 0 5px;
     padding: 0 8px; 
@@ -47,13 +50,22 @@ select {
 }
 
 .breakdown-item-card {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #F9F6EE;
 }
 
 
 .breakdown-item-card h4 {
     text-align: left;
     font-size: 1.1rem;
+}
+
+.breakdown-username {
+    color: #FAF9F6;
+}
+
+.breakdown-username span {
+    text-decoration: underline;
+    color: #f15152;
 }
 
 .breakdown-item-card p {
@@ -73,7 +85,7 @@ select {
     justify-content: center;
     align-items: center;
     gap: 15px;
-    border-bottom: solid white;
+    border-bottom: solid #FAF9F6;
     padding: 15px 0px;
     margin: 20px 0px;
 }
@@ -96,9 +108,9 @@ select {
 
 .add-food-btn {
     border: none;
-    color: white;
+    color: #F9F6EE;
     border-radius: 8px;
-    background-color: #f15152;
+    background-color: #141421;
     margin-top: 18px;
     width: 110px;
     height: 25px;
@@ -116,8 +128,8 @@ select {
 .suggested-recipe-container {
     margin: 20px 5px;
     padding: 5px;
-    color: white;
-    border: 1px solid white;
+    color: #FAF9F6;
+    border: 1px solid #141421;
     border-radius: 40px;
     text-align: center;
     width: 66%;
@@ -151,10 +163,11 @@ select {
 }
 
 .ingredient-btn {
+    white-space: nowrap;
     border: none;
     border-radius: 5px;
     padding: 8px;
-    color: white;
+    color: #FAF9F6;
     background-color: #141421;
     cursor: pointer;
 }
@@ -170,7 +183,7 @@ select {
 
 .sub-ingredients-btn {
     background-color: #f15152;
-    color: white;
+    color: #FAF9F6;
     width: fit-content;
     height: fit-content;
     border-radius: 5px;

@@ -26,7 +26,7 @@ export default function GetRecipe() {
 
     return (
         <section className='get-recipe'>
-            <h3>Get a recipe</h3>
+            <h3 className='nutrition-container-h3'>Get a recipe</h3>
 
             {/*action doesnt change the url and onSubmit does when using forms*/}
             <form action={addIngredient} className='ingredients-form'>

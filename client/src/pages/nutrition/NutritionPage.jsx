@@ -35,7 +35,7 @@ export default function NutritionPage() {
                 const res = await fetch(`/api/get-foods/search?food=${foodItem}`)
                 const data = await res.json()
 
-                // console.log(data)
+                console.log(data)
                 
                 // set the nutrients and the amount
                 setNutrients({
@@ -60,6 +60,7 @@ export default function NutritionPage() {
                 })
 
             } catch(err) {
+                console.log('here')
                 console.log(err)
             }
         }
@@ -114,12 +115,30 @@ export default function NutritionPage() {
         } catch (err) {
             console.error(err)
         }
+
+
+        /* RESET STATES AFTER SUBMITTING THE FOOD ITEM */
+        setFoodItem('')
+        setMealTime('')
+        setApiData(null)
+        setNutrients({
+            Calories: 0,
+            Sugar: 0,
+            Fiber: 0,
+            Fats: 0,
+            Carbs: 0,
+            Protein: 0,
+        })
+
     }
+
 
     return (
         <div className='nutrition-main'>
-            
-            <h1>Nutrition Overview {apiData ? `for ${apiData.name}` : ''}</h1>
+            {/* &nbsp; adds space before the span */}
+            <h1 className='breakdown-username'>Nutrition Overview for&nbsp;
+                <span>{ apiData ? apiData.name : ''}</span>
+            </h1>
             
             <div className='nutrition-container'>
                 
