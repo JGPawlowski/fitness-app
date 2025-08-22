@@ -1,5 +1,5 @@
 import express from 'express'
-import { getInfoController } from '../controllers/getInfoController.js'
+import { getInfoController } from '../../controllers/nutrition-controllers/getInfoController.js'
 
 const router = express.Router()
 

@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
-import nutritionInfoRouter from './routes/nutritionInfoRoute.js'
-import nutritionInsertRouter from './routes/nutritionInsertRoute.js'
-import getFood from './routes/getFoodRoute.js'
+import nutritionInfoRouter from './routes/nutrition-routes/nutritionInfoRoute.js'
+import nutritionInsertRouter from './routes/nutrition-routes/nutritionInsertRoute.js'
+import getFood from './routes/nutrition-routes/getFoodRoute.js'
 
 const app = express()
 const PORT = process.env.PORT || 3000

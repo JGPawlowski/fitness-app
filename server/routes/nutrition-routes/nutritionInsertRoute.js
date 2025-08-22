@@ -1,5 +1,5 @@
 import express from 'express'
-import { insertNutritionController } from '../controllers/insertNutritionController.js'
+import { insertNutritionController } from '../../controllers/nutrition-controllers/insertNutritionController.js'
 
 const router = express.Router()
 
