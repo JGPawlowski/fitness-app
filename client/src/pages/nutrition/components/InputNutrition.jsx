@@ -1,14 +1,28 @@
 import EnterFoodForm from "./EnterFoodForm";
 import GetRecipe from "./GetRecipe";
+import SubFoodForm from './SubFoodForm'
 
 
-export default function InputNutrition({ submitFoodHandler }) {
+export default function InputNutrition({ submitFoodHandler, foodLoaded, submitToDB, nutrients, foodItem }) {
+
+
     return (
         <div className='nutrition-container-right'>
 
-            <EnterFoodForm 
-                submitFoodHandler={submitFoodHandler} 
-            /> 
+             { foodLoaded ? 
+                // if there is food to be submitted to the database
+                <SubFoodForm 
+                    submitToDB={submitToDB}
+                    nutrients={nutrients}
+                    foodItem={foodItem}
+                />
+                    :
+                // no food to be submitted --- enter a food
+                <EnterFoodForm 
+                    submitFoodHandler={submitFoodHandler}
+                /> 
+            
+            }
             <GetRecipe />
 
         </div>

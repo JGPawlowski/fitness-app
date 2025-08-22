@@ -10,6 +10,7 @@ export default function NutritionPage() {
     const [foodItem, setFoodItem] = useState('')
     const [mealTime, setMealTime] = useState('')
     const [apiData, setApiData] = useState(null) // fetch the data from the database
+    const [foodLoaded, setFoodLoaded] = useState(false)
     const [nutrients, setNutrients] = useState({
         Calories: 0,
         Sugar: 0,
@@ -58,6 +59,8 @@ export default function NutritionPage() {
                         data[0].nf_sugars === null || data[0].nf_sugars === undefined ? 
                         0 : Number(data[0].nf_sugars)
                 })
+
+                setFoodLoaded(true)
 
             } catch(err) {
                 console.log('here')
@@ -130,6 +133,8 @@ export default function NutritionPage() {
             Protein: 0,
         })
 
+        setFoodLoaded(false)
+
     }
 
 
@@ -146,6 +151,10 @@ export default function NutritionPage() {
                 <InputNutrition 
                     submitFoodHandler={submitFoodHandler} 
                     handleRecipe={handleRecipe}
+                    foodLoaded={foodLoaded}
+                    submitToDB={submitToDB}
+                    nutrients={{...nutrients}}
+                    foodItem={foodItem}
                 /> 
                 
                 {/* will move this later on */}

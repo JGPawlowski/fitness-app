@@ -16,10 +16,10 @@ export default function EnterFoodForm({ submitFoodHandler }) {
             setMealTime('')
     }
 
+
     return (
-        <>
-            <h3 className='nutrition-container-h3'>Enter in a food or drink</h3>
             <form onSubmit={handleSubmit} className='enter-food-form'>
+                <h3 className='nutrition-container-h3'>Enter in a food or drink</h3>
 
                 <select 
                 className="select-meal" name='mealTime' onChange={(e) => setMealTime(e.target.value)} value={mealTime} required>
@@ -42,8 +42,10 @@ export default function EnterFoodForm({ submitFoodHandler }) {
                 />
                 
                 
-                <button className='add-food-btn'>Add Item</button> 
-            </form>
-        </>
+                <button className='add-food-btn'>Add Item</button>
+            </form> 
+
+
+
     )
 }
