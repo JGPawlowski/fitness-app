@@ -14,7 +14,7 @@ export default function InputNutrition({ submitFoodHandler, foodLoaded, submitTo
                 <SubFoodForm 
                     submitToDB={submitToDB}
                     nutrients={nutrients}
-                    foodItem={foodItem}
+                    foodItem={foodItem.charAt(0).toUpperCase() + foodItem.slice(1)}
                 />
                     :
                 // no food to be submitted --- enter a food

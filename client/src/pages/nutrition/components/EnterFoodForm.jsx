@@ -18,7 +18,7 @@ export default function EnterFoodForm({ submitFoodHandler }) {
 
 
     return (
-            <form onSubmit={handleSubmit} className='enter-food-form'>
+            <form onSubmit={handleSubmit} className='food-form'>
                 <h3 className='nutrition-container-h3'>Enter in a food or drink</h3>
 
                 <select 

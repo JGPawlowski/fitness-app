@@ -13,6 +13,7 @@ select {
     font-size: 2rem;
     margin: 10px 0px 25px 0px;
 }
+
 .nutrition-container-h3{
     text-align: center;
     text-decoration: underline;
@@ -79,7 +80,7 @@ select {
     font-family: Bebas Neue;
 }
 
-.enter-food-form {
+.food-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -89,6 +90,40 @@ select {
     padding: 15px 0px;
     margin: 20px 0px;
 }
+
+.nutrition-label {
+    border: 3px solid #141421;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nutrition-label h2 {
+    font-size: 1.2rem;
+    font-weight: 585;
+    text-decoration: underline;
+}
+
+.label-header {
+    display: flex;
+    padding: 5px 30px;
+    border: #141421;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+.display-food {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 5px;
+}
+
 
 .food-input {
     border: none;

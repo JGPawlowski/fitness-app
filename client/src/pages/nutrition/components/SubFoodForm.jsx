@@ -3,7 +3,6 @@
 
 export default function SubFoodForm({ submitToDB, nutrients, foodItem }) {
 
-    console.log(nutrients.Calories)
 
     const handleDataSubmit = (event) => {
         event.preventDefault()
@@ -13,10 +12,20 @@ export default function SubFoodForm({ submitToDB, nutrients, foodItem }) {
 
 
     return (
-        <form onSubmit={handleDataSubmit} className='enter-food-form'>
+        <form onSubmit={handleDataSubmit} className='food-form'>
             <h3 className='nutrition-container-h3'>Submit This Food</h3>
-            <h3>{foodItem}</h3>
+            
             <p>Calories: {nutrients.Calories}</p>
+
+            <div className='nutrition-label'>
+                <h2>{foodItem}</h2>
+
+                <div className='label-header'>
+                    <h4>Serving Size:</h4>
+                    <span>100g</span>
+                </div>
+
+            </div>
 
 
             <button className='add-food-btn'>Submit Food</button>

@@ -157,8 +157,6 @@ export default function NutritionPage() {
                     foodItem={foodItem}
                 /> 
                 
-                {/* will move this later on */}
-                <button onClick={submitToDB}>Submit to the database</button>
             </div>
 
             { recipe && (
