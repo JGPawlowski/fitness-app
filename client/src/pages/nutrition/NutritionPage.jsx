@@ -11,6 +11,7 @@ export default function NutritionPage() {
     const [mealTime, setMealTime] = useState('')
     const [apiData, setApiData] = useState(null) // fetch the data from the database
     const [foodLoaded, setFoodLoaded] = useState(false)
+    const [test, setTest] = useState([])
     const [nutrients, setNutrients] = useState({
         Calories: 0,
         Sugar: 0,
@@ -61,6 +62,7 @@ export default function NutritionPage() {
                 })
 
                 setFoodLoaded(true)
+                setTest(data[0])
 
             } catch(err) {
                 console.log('here')
@@ -155,6 +157,7 @@ export default function NutritionPage() {
                     submitToDB={submitToDB}
                     nutrients={{...nutrients}}
                     foodItem={foodItem}
+                    allData={test}
                 /> 
                 
             </div>

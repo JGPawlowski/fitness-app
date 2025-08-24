@@ -22,7 +22,7 @@ export default function SubFoodForm({ submitToDB, nutrients, foodItem }) {
 
                 <div className='label-header'>
                     <h4>Serving Size:</h4>
-                    <span>100g</span>
+                    <span></span>
                 </div>
 
             </div>

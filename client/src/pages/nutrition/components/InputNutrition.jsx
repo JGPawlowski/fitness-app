@@ -3,8 +3,9 @@ import GetRecipe from "./GetRecipe";
 import SubFoodForm from './SubFoodForm'
 
 
-export default function InputNutrition({ submitFoodHandler, foodLoaded, submitToDB, nutrients, foodItem }) {
+export default function InputNutrition({ submitFoodHandler, foodLoaded, submitToDB, nutrients, foodItem, allData }) {
 
+    console.log(typeof(allData))
 
     return (
         <div className='nutrition-container-right'>
