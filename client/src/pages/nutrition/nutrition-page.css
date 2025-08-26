@@ -77,7 +77,7 @@ select {
 .nutrition-main h3,
 .breakdown-item-card h4,
 .suggested-recipe-container h2 {
-    font-family: Bebas Neue;
+    font-family: Bebas Neue, sans-serif;
 }
 
 .food-form {
@@ -87,34 +87,93 @@ select {
     align-items: center;
     gap: 15px;
     border-bottom: solid #FAF9F6;
-    padding: 15px 0px;
+    padding: 8px 0px;
     margin: 20px 0px;
 }
 
-.nutrition-label {
-    border: 3px solid #141421;
-    width: 300px;
+.sub-food-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 15px;
+    border-bottom: solid #FAF9F6;
+    margin: 20px 0px;
+}
+
+.sub-food-form h3 {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 1.6rem;
+    padding: 0;
+    margin: 5px;
+}
+
+.sub-food-form > h2 {
+    color: #f15152;
+    font-family: Bebas Neue;
+    font-style: italic;
+    border: dashed #f15152;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.sub-food-form span {
+    font-weight: bold;
+}
+
+.nutrition-label {
+    border-radius: 25px;
+    border: 3px solid #141421;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.nutrition-breakdown > h2 {
+    margin: 0;
+    padding: 0;
 }
 
 .nutrition-label h2 {
     font-size: 1.2rem;
     font-weight: 585;
     text-decoration: underline;
+    padding: 25px 10px 5px 10px; 
+    margin: 0;
 }
 
 .label-header {
     display: flex;
-    padding: 5px 30px;
-    border: #141421;
+    flex-direction: column;
+    border-bottom: 6px solid #141421;
     justify-content: space-between;
-    align-items: center;
     width: 100%;
 }
 
+.label-header h2 {
+    font-family: Bebas Neue, sans-serif;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    padding: 0;
+    margin: 5px;
+}
+
+.nutrition-label-data {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid #141421;
+}
+
+.nutrition-label-data p {
+    margin: 0px;
+    padding: 10px 30px;
+    /* border-bottom: 1px solid #141421  */
+}
 
 .display-food {
     display: flex;

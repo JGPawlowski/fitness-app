@@ -12,17 +12,29 @@ export default function SubFoodForm({ submitToDB, nutrients, foodItem }) {
 
 
     return (
-        <form onSubmit={handleDataSubmit} className='food-form'>
-            <h3 className='nutrition-container-h3'>Submit This Food</h3>
+        <form onSubmit={handleDataSubmit} className='sub-food-form'>
+            <h3>Submit This Food</h3>
+            <h2>{foodItem}</h2>
             
-            <p>Calories: {nutrients.Calories}</p>
 
             <div className='nutrition-label'>
-                <h2>{foodItem}</h2>
 
                 <div className='label-header'>
                     <h4>Serving Size:</h4>
-                    <span></span>
+                    <h2>Total Calories: <span>{nutrients.Calories}</span></h2>
+                </div>
+                
+                <div className='nutrition-label-data'>
+                    <p><strong>Fat:</strong></p> 
+                    {/* <p><strong>Carbs:</strong></p> 
+                    <p><strong>Sugar:</strong></p>
+                    <p><strong>Protein:</strong></p> */}
+                </div>
+                <div className='nutrition-label-data'>
+                    <p><strong>Sugar:</strong></p> 
+                    {/* <p><strong>Carbs:</strong></p> 
+                    <p><strong>Sugar:</strong></p>
+                    <p><strong>Protein:</strong></p> */}
                 </div>
 
             </div>
