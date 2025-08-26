@@ -26,6 +26,11 @@ export default function SubFoodForm({ submitToDB, nutrients, foodItem }) {
                 
                 <div className='nutrition-label-data'>
                     <p><strong>Fat:</strong></p> 
+                    <p>15</p>
+
+                    {/* <dt><strong>Fat:</strong></dt> 
+                    <dd>15</dd> */}
+
                     {/* <p><strong>Carbs:</strong></p> 
                     <p><strong>Sugar:</strong></p>
                     <p><strong>Protein:</strong></p> */}

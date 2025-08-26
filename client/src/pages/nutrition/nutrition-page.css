@@ -165,7 +165,8 @@ select {
 
 .nutrition-label-data {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    justify-content: space-between;
     border-bottom: 2px solid #141421;
 }
 
