@@ -96,7 +96,7 @@ export default function NutritionPage() {
             }
         }
         getDB()
-        }, [user_id, todaysDate, nutrients]); 
+    }, [user_id, todaysDate, nutrients]); 
        
 
     const handleRecipe = () => {
@@ -125,7 +125,6 @@ export default function NutritionPage() {
         /* RESET STATES AFTER SUBMITTING THE FOOD ITEM */
         setFoodItem('')
         setMealTime('')
-        setApiData(null)
         setNutrients({
             Calories: 0,
             Sugar: 0,

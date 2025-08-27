@@ -1,7 +1,7 @@
+import { useEffect, useRef } from "react"
 
 
-
-export default function SubFoodForm({ submitToDB, nutrients, foodItem }) {
+export default function SubFoodForm({ submitToDB, nutrients, foodItem, allData }) {
 
 
     const handleDataSubmit = (event) => {
@@ -10,42 +10,49 @@ export default function SubFoodForm({ submitToDB, nutrients, foodItem }) {
     }
 
 
+    // after adding the food ---- focus on the button so user can look at food and then just add it by hitting enter
+    const subBtnRef = useRef(null)
+    useEffect(() => {
+        subBtnRef.current.focus()
+    }, [])
+
+
 
     return (
         <form onSubmit={handleDataSubmit} className='sub-food-form'>
-            <h3>Submit This Food</h3>
-            <h2>{foodItem}</h2>
-            
+            <h3>Add to Daily Nutrition</h3>
 
             <div className='nutrition-label'>
-
+                    <h2>{foodItem}</h2>
                 <div className='label-header'>
-                    <h4>Serving Size:</h4>
-                    <h2>Total Calories: <span>{nutrients.Calories}</span></h2>
+                    <h4>Serving Size: <span>{allData.serving_qty} {allData.serving_unit}</span></h4>
+                    <h3>Total Calories: <span>{nutrients.Calories}</span></h3>
                 </div>
                 
                 <div className='nutrition-label-data'>
-                    <p><strong>Fat:</strong></p> 
-                    <p>15</p>
-
-                    {/* <dt><strong>Fat:</strong></dt> 
-                    <dd>15</dd> */}
-
-                    {/* <p><strong>Carbs:</strong></p> 
-                    <p><strong>Sugar:</strong></p>
-                    <p><strong>Protein:</strong></p> */}
+                    <dt><strong>Fat:</strong></dt> 
+                    <dd>{nutrients.Fats}</dd>
                 </div>
+
                 <div className='nutrition-label-data'>
-                    <p><strong>Sugar:</strong></p> 
-                    {/* <p><strong>Carbs:</strong></p> 
-                    <p><strong>Sugar:</strong></p>
-                    <p><strong>Protein:</strong></p> */}
+                    <dt><strong>Sugar:</strong></dt> 
+                    <dd>{nutrients.Sugar}</dd>
+                </div>
+
+                <div className='nutrition-label-data'>
+                    <dt><strong>Carbs:</strong></dt>
+                    <dd>{nutrients.Carbs}</dd>
+                </div>
+
+                <div className='nutrition-label-data'>
+                    <dt><strong>Protein:</strong></dt>
+                    <dd>{nutrients.Protein}</dd>
                 </div>
 
             </div>
 
 
-            <button className='add-food-btn'>Submit Food</button>
+            <button ref={subBtnRef} className='add-food-btn'>Submit Food</button>
         </form>
     )
 }

@@ -3,9 +3,7 @@ import GetRecipe from "./GetRecipe";
 import SubFoodForm from './SubFoodForm'
 
 
-export default function InputNutrition({ submitFoodHandler, foodLoaded, submitToDB, nutrients, foodItem, allData }) {
-
-    console.log(typeof(allData))
+export default function InputNutrition({ submitFoodHandler, foodLoaded, submitToDB, nutrients, foodItem, allData}) {
 
     return (
         <div className='nutrition-container-right'>
@@ -16,6 +14,7 @@ export default function InputNutrition({ submitFoodHandler, foodLoaded, submitTo
                     submitToDB={submitToDB}
                     nutrients={nutrients}
                     foodItem={foodItem.charAt(0).toUpperCase() + foodItem.slice(1)}
+                    allData={allData}
                 />
                     :
                 // no food to be submitted --- enter a food
