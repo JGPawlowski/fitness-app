@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 
 
-export default function SubFoodForm({ submitToDB, nutrients, foodItem, allData }) {
+export default function SubFoodForm({ submitToDB, nutrients, foodItem, allData, setFoodLoaded }) {
 
 
     const handleDataSubmit = (event) => {
@@ -51,8 +51,11 @@ export default function SubFoodForm({ submitToDB, nutrients, foodItem, allData }
 
             </div>
 
-
-            <button ref={subBtnRef} className='add-food-btn'>Submit Food</button>
+            <div className='sub-btn-div'>
+                <button ref={subBtnRef} className='add-food-btn'>Submit Food</button>
+                {/* may change how the cancel food button changes the state from g-parent */}
+                <button className='cancel-sub-btn' onClick={() => setFoodLoaded(false)}>cancel</button>
+            </div>
         </form>
     )
 }

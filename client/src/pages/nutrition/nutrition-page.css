@@ -28,13 +28,15 @@ select {
     margin: 50px;
 } 
 
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between items in each column */
+}
+
 .nutrition-container-left, 
 .nutrition-container-right {
-    /* background-color: #EDEADE; */
-    background-color: #FAF9F6;
     flex: 1;
-    border: solid #141421;
-    border-radius: 30px;
     margin: 0 5px;
     padding: 0 8px; 
 }
@@ -51,7 +53,11 @@ select {
 }
 
 .breakdown-item-card {
+    background-color: #F9F6EE;
+    border-radius: 30px;
     border-bottom: 1px solid #F9F6EE;
+    padding: 30px;
+    margin: 10px;
 }
 
 
@@ -85,7 +91,9 @@ select {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 30px;
     gap: 15px;
+    background-color: #FAF9F6;
     border-bottom: solid #FAF9F6;
     padding: 8px 0px;
     margin: 20px 0px;
@@ -93,12 +101,15 @@ select {
 
 .sub-food-form {
     display: flex;
+    border-radius: 30px;
+    background-color: #FAF9F6;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 15px;
     border-bottom: solid #FAF9F6;
     margin: 20px 0px;
+    padding: 25px;
 }
 
 .sub-food-form h3 {
@@ -111,6 +122,10 @@ select {
 
 .sub-food-form span {
     font-weight: bold;
+}
+
+.sub-btn-div {
+    display: block;
 }
 
 .nutrition-label {
@@ -217,14 +232,28 @@ select {
     width: 110px;
     height: 25px;
     cursor: pointer;
+    margin-right: 1rem;
 }
+
+.cancel-sub-btn {
+    margin-left: 1rem;
+    background-color: #f15152;
+    color: #F9F6EE;
+    border: none;
+    border-radius: 8px;
+    height: 20px;
+}
+
+
 
 .get-recipe {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 5px;
+    border-radius: 30px;
+    background-color: #FAF9F6;
+    padding: 15px;
 }
 
 .suggested-recipe-container {

@@ -16,10 +16,10 @@ export default function NutritionBreakdown(props) {
 
     return (
         <div className='nutrition-container-left'>
-            <h3 className='nutrition-container-h3'>Breakdown</h3>
+            <h3 className='nutrition-container-h3'>Breakdown</h3> 
 
             <section className='nutrition-breakdown'>
-                {hasData ? 
+                { hasData ? 
                 <>
                     <BreakdownCard
                         title='Calories:'
@@ -44,7 +44,11 @@ export default function NutritionBreakdown(props) {
                         fiber={props.fiber}
                         description='Summary of micros/other for the day and how they relate to goal using % or other metrics'
                         /> 
-                </> : <h3>Loading Nutrition Data...</h3>
+                </> : 
+                // loading data
+                <section className='breakdown-item-card'>
+                    <h3>Loading Nutrition Data...</h3>
+                </section>
 }
             </section>
 

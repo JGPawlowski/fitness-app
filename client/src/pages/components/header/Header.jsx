@@ -11,9 +11,9 @@ export default function Header() {
 
             <div className='info-box'>
                 <Link to={'/'}>Home</Link>
+                <Link to={'/progress-history'}>Overview</Link>
                 <Link to={"/nutrition"}>Nutrition</Link>
                 <Link to={'/fitness'}>Fitness</Link>
-                <Link to={'/progress-history'}>Overview</Link>
                 <Link to={'/user'}> {/* will link this to an individual users page later on */}
                     <img className='user-icon' src='/src/assets/user-line.svg' alt='user-icon'/>
                 </Link>

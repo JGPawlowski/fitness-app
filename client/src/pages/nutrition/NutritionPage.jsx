@@ -157,6 +157,7 @@ export default function NutritionPage() {
                     nutrients={{...nutrients}}
                     foodItem={foodItem}
                     allData={test}
+                    setFoodLoaded={setFoodLoaded}
                 /> 
                 
             </div>
