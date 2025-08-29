@@ -34,7 +34,7 @@ export default function NutritionPage() {
         async function getFood() {
 
             try {
-                const res = await fetch(`/api/get-foods/search?food=${foodItem}`)
+                const res = await fetch(`/api/nutrition/search?food=${foodItem}`)
                 const data = await res.json()
 
                 console.log(data)
@@ -76,10 +76,7 @@ export default function NutritionPage() {
 
     // test user and date for fetching data
     const user_id = 1
-    const today = new Date()
-    const todaysDate = today.toLocaleDateString("en-CA") // format date and timezone 
-
-    
+    const todaysDate = new Date().toLocaleDateString('en-CA') // format date and timezone 
     /** GET THE USER DATA FROM THE POSTGRES DATABASE **/
     useEffect(() => {
         async function getDB() {
@@ -96,7 +93,7 @@ export default function NutritionPage() {
             }
         }
         getDB()
-    }, [user_id, todaysDate, nutrients]); 
+    }, [user_id, todaysDate, nutrients])
        
 
     const handleRecipe = () => {

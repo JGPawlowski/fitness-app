@@ -23,7 +23,7 @@ export default function NutritionBreakdown(props) {
                 <>
                     <BreakdownCard
                         title='Calories:'
-                        calories={props.calories}
+                        calories={props.total_calories}
                         // goal={11}
                         description='Summary of calories for the day and how they relate to goal % or other metrics'
                         />
@@ -31,17 +31,17 @@ export default function NutritionBreakdown(props) {
                     <BreakdownCard 
                         title='Macros:'
                         macros={{
-                                carbs: props.carbs_grams,
-                                protein: props.protein_grams,
-                                fats: props.fat_grams,
-                                sugar: props.sugar_grams
+                                carbs: props.total_carb,
+                                protein: props.total_protein,
+                                fats: props.total_fat,
+                                sugar: props.total_sugar
                             }}
                         description='Summary of macros for the day and how they relate to goal % or other metrics'
                         />
                     
                     <BreakdownCard 
                         title='Micros/Other:'
-                        fiber={props.fiber}
+                        fiber={props.total_fiber}
                         description='Summary of micros/other for the day and how they relate to goal using % or other metrics'
                         /> 
                 </> : 

@@ -23,15 +23,15 @@ export default function BreakdownCard(props) {
             <h4>{props.title}</h4>
             <p>{props.description}</p>
             
-            {calories ? <p>Calories: {calories}</p> : null}
+            { calories ? <p>Calories: {calories}</p> : null}
 
             { macros ? 
             <ul>
 
-                <li>Carbs: {macros.carbs}</li>
-                <li>Protein: {macros.protein}</li>
-                <li>Fats: {macros.fats}</li>
-                <li>Sugar: {macros.sugar}</li>
+                <li>Carbs: {macros.carbs ? macros.carbs : 0}</li>
+                <li>Protein: {macros.protein ? macros.protein : 0}</li>
+                <li>Fats: {macros.fats ? macros.fats : 0}</li>
+                <li>Sugar: {macros.sugar ? macros.sugar : 0}</li>
 
             </ul> : null
             }
