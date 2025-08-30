@@ -2,6 +2,7 @@ import './nutrition-page.css'
 import BreakdownNutrition from './components/BreakdownNutrition'
 import InputNutrition from './components/InputNutrition'
 
+import { Link } from "react-router-dom"
 import { useState, useEffect } from 'react'
 
 export default function NutritionPage() {
@@ -140,7 +141,9 @@ export default function NutritionPage() {
         <div className='nutrition-main'>
             {/* &nbsp; adds space before the span */}
             <h1 className='breakdown-username'>Nutrition Overview for&nbsp;
-                <span>{ apiData ? apiData.name : ''}</span>
+                <Link to={'/user'}>
+                    <span>{ apiData ? apiData.name : ''}</span>
+                </Link>
             </h1>
             
             <div className='nutrition-container'>

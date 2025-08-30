@@ -3,12 +3,15 @@ import { getInfoController, searchFood, insertNutritionController } from '../con
 
 const router = express.Router()
 
+            /* GET */
 // GET /api/nutrition/search?food=apple
 router.get('/search', searchFood)
 
 // GET /api/nutrition/:id?date=YYYY-MM-DD
 router.get('/:id', getInfoController)
 
+
+            /* POST */
 // POST /api/nutrition/add
 router.post('/add', insertNutritionController)
 

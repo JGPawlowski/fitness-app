@@ -7,7 +7,7 @@ export default function InputNutrition({ submitFoodHandler, foodLoaded, submitTo
 
     return (
         <div className='nutrition-container-right'>
-            <h3 className='nutrition-container-h3'>Food</h3>
+            {/* <h3 className='nutrition-container-h3'>Food</h3> */}
 
              { foodLoaded ? 
                 // if there is food to be submitted to the database
