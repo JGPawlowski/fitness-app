@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react"
 
 
-export default function SubFoodForm({ submitToDB, nutrients, foodItem, allData, setFoodLoaded }) {
+export default function SubFoodForm({ submitToDB, nutrients, allData, setFoodLoaded }) {
 
 
     const handleDataSubmit = (event) => {
@@ -23,7 +23,7 @@ export default function SubFoodForm({ submitToDB, nutrients, foodItem, allData, 
             <h3>Add to Daily Nutrition</h3>
 
             <div className='nutrition-label'>
-                    <h2>{foodItem}</h2>
+                    <h2>{nutrients.foodName}</h2>
                 <div className='label-header'>
                     <h4>Serving Size: <span>{allData.serving_qty} {allData.serving_unit}</span></h4>
                     <h3>Total Calories: <span>{nutrients.Calories}</span></h3>

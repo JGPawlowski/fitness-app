@@ -48,7 +48,7 @@ export default function Weekly(props) {
         }, 250) // half of transition duration
     }
 
-    const view = props.currentView === 'fitness' ? 'Nutrition' : 'Fitness'
+    const view = props.currentView === 'nutrition' ? 'Nutrition' : 'Fitness'
 
     
     return (
@@ -56,12 +56,6 @@ export default function Weekly(props) {
             <div className='stats-card' style={{opacity: isVisible ? 1 : 0}}>
                 {
                     props.currentView === 'fitness' ?
-                    <FitnessDash 
-                        caloriesBurned={500}
-                        steps={20000}
-                        heartRate={80}
-                        sleep={8}
-                    /> : 
                     <NutritionDash
                         calories={apiData ? apiData.total_calories : 0}
                         carbs={apiData ? apiData.total_carb : 0}
@@ -71,7 +65,13 @@ export default function Weekly(props) {
                         fiber={apiData ? apiData.total_fiber : 0}
                         sugar={apiData ? apiData.total_sugar : 0}
                         water={240}
-                    />
+                    /> :
+                    <FitnessDash 
+                        caloriesBurned={500}
+                        steps={20000}
+                        heartRate={80}
+                        sleep={8}
+                    /> 
                 }
             </div>
         

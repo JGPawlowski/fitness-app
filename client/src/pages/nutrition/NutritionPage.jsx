@@ -14,6 +14,7 @@ export default function NutritionPage() {
     const [foodLoaded, setFoodLoaded] = useState(false)
     const [test, setTest] = useState([])
     const [nutrients, setNutrients] = useState({
+        FoodName: '',
         Calories: 0,
         Sugar: 0,
         Fiber: 0,
@@ -42,6 +43,7 @@ export default function NutritionPage() {
                 
                 // set the nutrients and the amount
                 setNutrients({
+                    foodName: foodItem,
                     Calories: 
                         data[0].nf_calories === null || data[0].nf_calories === undefined ?
                         0 : Math.floor(Number(data[0].nf_calories)),
@@ -73,28 +75,29 @@ export default function NutritionPage() {
 
         getFood()
     }, [foodItem, mealTime])
-    
 
-    // test user and date for fetching data
+
+    // test user
     const user_id = 1
-    const todaysDate = new Date().toLocaleDateString('en-CA') // format date and timezone 
-    /** GET THE USER DATA FROM THE POSTGRES DATABASE **/
-    useEffect(() => {
-        async function getDB() {
-            try {    
-                const res = await fetch(`/api/nutrition/${user_id}?date=${todaysDate}`)   // call backend route
-                // non 200 responses
-                if (!res.ok) throw new Error("Network response was not ok")
-                    
-                const data = await res.json()
-                setApiData(data)
+    const todaysDate = new Date().toLocaleDateString("en-CA") // YYYY-MM-DD
 
-            } catch(err) {
-                console.error(err)
+    useEffect(() => {
+    async function getDB() {
+        try {
+            const res = await fetch(`/api/nutrition/${user_id}?date=${todaysDate}`)
+
+            if (!res.ok) throw new Error("Network response was not ok")
+
+            const data = await res.json()
+            setApiData(data) // save totals + user info
+
+            console.log("Fetched data:", data)
+            } catch (err) {
+            console.error("Error fetching user data:", err)
             }
         }
         getDB()
-    }, [user_id, todaysDate, nutrients])
+    }, [user_id, todaysDate]) // only re-run if user_id or date changes
        
 
     const handleRecipe = () => {
@@ -108,22 +111,39 @@ export default function NutritionPage() {
 
     const submitToDB = async () => {
         try {
+            // Build payload to match API
+            const payload = {
+            foodName: foodItem,  // send the current food item
+            nutrients: {
+                Calories: nutrients.Calories,
+                Sugar: nutrients.Sugar,
+                Fiber: nutrients.Fiber,
+                Fats: nutrients.Fats,
+                Carbs: nutrients.Carbs,
+                Protein: nutrients.Protein,
+            }
+            }
+
             const res = await fetch("/api/nutrition/add", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ nutrients })
+            body: JSON.stringify(payload)
             })
+
             const result = await res.json()
+
             console.log(result.message)
+            console.log("Today's totals:", result.totals)
+
         } catch (err) {
             console.error(err)
         }
 
-
-        /* RESET STATES AFTER SUBMITTING THE FOOD ITEM */
-        setFoodItem('')
-        setMealTime('')
+        // RESET STATES AFTER SUBMITTING THE FOOD ITEM
+        setFoodItem('');
+        setMealTime('');
         setNutrients({
+            foodName: '',
             Calories: 0,
             Sugar: 0,
             Fiber: 0,
@@ -133,8 +153,7 @@ export default function NutritionPage() {
         })
 
         setFoodLoaded(false)
-
-    }
+        }
 
 
     return (

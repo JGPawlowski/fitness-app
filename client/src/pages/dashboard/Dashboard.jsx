@@ -4,10 +4,10 @@ import Weekly from '/src/pages/dashboard/Weekly/Weekly';
 
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend, ArcElement,} from 'chart.js';
 
-import { Line, Doughnut } from 'react-chartjs-2';
+import { Line, Doughnut } from 'react-chartjs-2'
 
 // Register required components
-ChartJS.register( LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement );
+ChartJS.register( LineElement, PointElement, CategoryScale, LinearScale, Tooltip, Legend, ArcElement )
 
 
 export default function Dashboard() {
@@ -39,51 +39,14 @@ export default function Dashboard() {
         beginAtZero: true,
       },
     },
-  };
-
-  /*
-  const data2 = {
-    labels: ["Protein", "Carbs", "Fat"],
-    datasets: [
-      {
-        label: "Macronutrient Breakdown",
-        data: [30, 50, 20],
-        backgroundColor: [
-          "rgba(75, 192, 192, 0.6)",   // Protein
-          "rgba(255, 205, 86, 0.6)",   // Carbs
-          "rgba(255, 99, 132, 0.6)"    // Fat
-        ],
-        borderColor: [
-          "rgba(75, 192, 192, 1)",
-          "rgba(255, 205, 86, 1)",
-          "rgba(255, 99, 132, 1)"
-        ],
-        borderWidth: 1
-      }
-    ]
-  };
-
-  const options2 = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: "bottom"
-      }
-    }
-  };
-
-  */
-
-
-
-
+  }
 
 
     const [currentView, setCurrentView] = useState('fitness')
        
 
     const toggleView = () => {
-        setCurrentView((prev) => (prev === 'fitness' ? 'nutrition' : 'fitness'))
+        setCurrentView((prev) => (prev === 'nutrition' ? 'fitness' : 'nutrition'))
     }
 
 

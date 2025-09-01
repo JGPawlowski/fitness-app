@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import BreakdownCard from "./BreakdownCard";
+import DailyFoods from "./DailyFoods";
 
 
 export default function NutritionBreakdown(props) {
@@ -26,29 +27,33 @@ export default function NutritionBreakdown(props) {
                         calories={props.total_calories}
                         // goal={11}
                         description='Summary of calories for the day and how they relate to goal % or other metrics'
-                        />
+                    />
 
                     <BreakdownCard 
                         title='Macros:'
                         macros={{
-                                carbs: props.total_carb,
+                                carbs: props.total_carbs,
                                 protein: props.total_protein,
                                 fats: props.total_fat,
                                 sugar: props.total_sugar
                             }}
                         description='Summary of macros for the day and how they relate to goal % or other metrics'
-                        />
+                    />
                     
-                    <BreakdownCard 
+                    {/* <BreakdownCard 
                         title='Micros/Other:'
                         fiber={props.total_fiber}
                         description='Summary of micros/other for the day and how they relate to goal using % or other metrics'
-                        /> 
+                    />  */}
+
+                    <DailyFoods />
+                    
                 </> : 
                 // loading data
                 <section className='breakdown-item-card'>
                     <h3>Loading Nutrition Data...</h3>
                 </section>
+
 }
             </section>
 

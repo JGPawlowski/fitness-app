@@ -2,73 +2,111 @@ import pool from '../config/db.js'
 
 
 // insert food into db
+// export const insertNutritionController = async (req, res) => {
+//   try {
+//     const { nutrients } = req.body
+//     const user_id = 1
+//     if (!nutrients) return res.status(400).json({ error: 'Nutrients are required' })
+
+//     const { Calories, Protein, Fats, Carbs, Fiber, Sugar } = nutrients
+//     const today = new Date();
+//     const todaysDate = today.toLocaleDateString("en-CA");
+
+//     const existing = await pool.query(
+//       `select * from nutrition where user_id = $1 and entry_date = $2;`,
+//       [user_id, today]
+//     )
+
+//     if (existing.rows.length > 0) {
+//       // Update existing row
+//       const updateQuery = `
+//         update nutrition
+//         set 
+//           protein = protein + $1,
+//           carbs = carbs + $2,
+//           fat = fat + $3,
+//           fiber = total_fiber + $4,
+//           total_sugar = fiber + $5,
+//           calories = calories + $6
+//         where user_id = $7 and entry_date = $8;
+//       `
+//       const updateValues = [
+//         Protein || 0,
+//         Carbs || 0,
+//         Fats || 0,
+//         Fiber || 0,
+//         Sugar || 0,
+//         Calories || 0,
+//         user_id,
+//         today
+//       ]
+//       await pool.query(updateQuery, updateValues)
+//       return res.status(200).json({ message: 'Nutrition updated for today' })
+//     } else {
+//       // Insert new row
+//       const insertQuery = `
+//         insert into nutrition
+//           (user_id, food_name, protein, carbs, fat, fiber, sugar, calories, entry_date)
+//         values ($1, $2, $3, $4, $5, $6, $7, $8);
+//       `
+//       const insertValues = [
+//             user_id,
+//             foodName || '',
+//             Protein || 0,
+//             Carbs || 0,
+//             Fats || 0,
+//             Fiber || 0,
+//             Sugar || 0,
+//             Calories || 0,
+//             today
+//         ]
+
+//       await pool.query(insertQuery, insertValues)
+//       return res.status(201).json({ message: 'Nutrition added for today' })
+//     }
+//   } catch (err) {
+//     console.error(err)
+//     res.status(500).json({ error: 'Server error' })
+//   }
+// }
+
 export const insertNutritionController = async (req, res) => {
   try {
-    const { nutrients } = req.body
-    const user_id = 1
-    if (!nutrients) return res.status(400).json({ error: 'Nutrients are required' })
+    const { foodName, nutrients } = req.body;
+    const user_id = 1;
 
-    const { Calories, Protein, Fats, Carbs, Fiber, Sugar } = nutrients
-    const today = new Date();
-    const todaysDate = today.toLocaleDateString("en-CA");
+    if (!foodName || !nutrients)
+      return res.status(400).json({ error: 'Food name and nutrients are required' });
 
-    const existing = await pool.query(
-      `select * from nutrition where user_id = $1 and entry_date = $2;`,
-      [user_id, today]
-    )
+    const { Calories, Protein, Fats, Carbs, Fiber, Sugar } = nutrients;
+    const entry_date = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
 
-    if (existing.rows.length > 0) {
-      // Update existing row
-      const updateQuery = `
-        update nutrition
-        set 
-          total_protein = total_protein + $1,
-          total_carb = total_carb + $2,
-          total_fat = total_fat + $3,
-          total_fiber = total_fiber + $4,
-          total_sugar = total_sugar + $5,
-          total_calories = total_calories + $6
-        where user_id = $7 and entry_date = $8;
-      `
-      const updateValues = [
-        Protein || 0,
-        Carbs || 0,
-        Fats || 0,
-        Fiber || 0,
-        Sugar || 0,
-        Calories || 0,
-        user_id,
-        today
-      ]
-      await pool.query(updateQuery, updateValues)
-      return res.status(200).json({ message: 'Nutrition updated for today' })
-    } else {
-      // Insert new row
-      const insertQuery = `
-        insert into nutrition
-          (user_id, total_protein, total_carb, total_fat, total_fiber, total_sugar, total_calories, entry_date)
-        values ($1, $2, $3, $4, $5, $6, $7, $8);
-      `
-      const insertValues = [
-            user_id,
-            Protein || 0,
-            Carbs || 0,
-            Fats || 0,
-            Fiber || 0,
-            Sugar || 0,
-            Calories || 0,
-            today
-        ]
+    // Insert the new nutrition row
+    const insertQuery = `
+      INSERT INTO nutrition
+        (user_id, entry_date, food_name, protein, carbs, fat, fiber, sugar, calories)
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
+      RETURNING *;
+    `;
+    const insertValues = [
+      user_id, entry_date, foodName,
+      Protein || 0, Carbs || 0, Fats || 0,
+      Fiber || 0, Sugar || 0, Calories || 0
+    ];
 
-      await pool.query(insertQuery, insertValues)
-      return res.status(201).json({ message: 'Nutrition added for today' })
-    }
+    const inserted = await pool.query(insertQuery, insertValues);
+
+    // Return only the inserted row
+    res.status(201).json({
+      message: 'Food added for today',
+      food: inserted.rows[0]
+    });
+
   } catch (err) {
-    console.error(err)
-    res.status(500).json({ error: 'Server error' })
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
   }
-}
-
+};
 
 
 // search food from api
@@ -106,25 +144,63 @@ export const searchFood = async (req, res) => {
 
 
 // get daily info from the db
+// export const getInfoController = async (req, res) => {
+//   try {
+//     const { id } = req.params
+//     // Use local date to avoid UTC issues
+//     const date = req.query.date || new Date().toLocaleDateString('en-CA') // YYYY-MM-DD
+
+//     const result = await pool.query(`
+//       SELECT u.user_id, u.name, 
+//              n.calories, n.protein, n.carbs, n.fat, n.fiber, n.sugar
+//       FROM users u
+//       JOIN nutrition n ON u.user_id = n.user_id
+//       WHERE u.user_id = $1 AND n.entry_date = $2;
+//     `, [id, date])
+
+//     res.json(result.rows[0] || {}); // empty object if no entry
+//   } catch (err) {
+//     console.error(err)
+//     res.status(500).json({ error: 'Server error' })
+//   }
+// }
+
+
 export const getInfoController = async (req, res) => {
   try {
-    const { id } = req.params
-    // Use local date to avoid UTC issues
-    const date = req.query.date || new Date().toLocaleDateString('en-CA') // YYYY-MM-DD
+    const { id } = req.params;
+    const date = req.query.date || new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD
 
     const result = await pool.query(`
-      SELECT u.user_id, u.name, 
-             n.total_calories, n.total_protein, n.total_carb, n.total_fat, n.total_fiber, n.total_sugar
+      SELECT 
+        u.name,
+        SUM(n.protein)   AS total_protein,
+        SUM(n.carbs)     AS total_carbs,
+        SUM(n.fat)       AS total_fat,
+        SUM(n.fiber)     AS total_fiber,
+        SUM(n.sugar)     AS total_sugar,
+        SUM(n.calories)  AS total_calories
       FROM users u
       JOIN nutrition n ON u.user_id = n.user_id
-      WHERE u.user_id = $1 AND n.entry_date = $2;
-    `, [id, date])
+      WHERE u.user_id = $1 AND n.entry_date = $2
+      GROUP BY u.name;
+    `, [id, date]);
 
-    res.json(result.rows[0] || {}); // empty object if no entry
+    res.json(result.rows[0] || {
+      name: null,
+      total_protein: 0,
+      total_carbs: 0,
+      total_fat: 0,
+      total_fiber: 0,
+      total_sugar: 0,
+      total_calories: 0
+    });
+
   } catch (err) {
-    console.error(err)
-    res.status(500).json({ error: 'Server error' })
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
   }
-}
+};
+
 
 
