@@ -1,13 +1,44 @@
 import NutritionDash from "./NutritionDash";
 import FitnessDash from "./FitnessDash";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 
 export default function Weekly(props) {
 
     const [isVisible, setIsVisible] = useState(true)
+    const [apiData, setApiData] = useState(null)
+
+
+
+        // test user and date for fetching data
+    const user_id = 1
+    const todaysDate = new Date().toLocaleDateString('en-CA') // format date and timezone 
+    /** GET THE USER DATA FROM THE POSTGRES DATABASE **/
+    useEffect(() => {
+        async function getDB() {
+            try {    
+                const res = await fetch(`/api/nutrition/${user_id}?date=${todaysDate}`)   // call backend route
+                // non 200 responses
+                if (!res.ok) throw new Error("Network response was not ok")
+                    
+                const data = await res.json()
+                setApiData(data)
+
+            } catch(err) {
+                console.error(err)
+            }
+        }
+        getDB()
+    }, [user_id, todaysDate])
+
+
+    useEffect(() => {
+        apiData ? console.log(apiData.total_fiber) : console.log('not working')
+    }, [apiData])
+
+
 
     const switchView = () => {
         setIsVisible(false)
@@ -32,13 +63,13 @@ export default function Weekly(props) {
                         sleep={8}
                     /> : 
                     <NutritionDash
-                        calories={3200}
-                        carbs={100}
-                        proteins={80}
-                        fats={120}
+                        calories={apiData ? apiData.total_calories : 0}
+                        carbs={apiData ? apiData.total_carb : 0}
+                        protein={apiData ? apiData.total_protein : 0}
+                        fats={apiData ? apiData.total_fat : 0}
                         vitMin={75}
-                        fiber={65}
-                        sugar={26}
+                        fiber={apiData ? apiData.total_fiber : 0}
+                        sugar={apiData ? apiData.total_sugar : 0}
                         water={240}
                     />
                 }

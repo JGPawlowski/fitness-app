@@ -80,6 +80,7 @@ export default function Dashboard() {
 
 
     const [currentView, setCurrentView] = useState('fitness')
+       
 
     const toggleView = () => {
         setCurrentView((prev) => (prev === 'fitness' ? 'nutrition' : 'fitness'))

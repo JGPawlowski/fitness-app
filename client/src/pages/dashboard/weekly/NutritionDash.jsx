@@ -6,7 +6,7 @@ export default function Nutrition(props) {
             <h2>Weekly Nutrition Averages</h2>
             <div className="nutrition-stats-container">
                 <ul className="nutrition-list">
-                    <li><strong>Calories:</strong></li>
+                    <li><strong>Calories:</strong> {props.calories}</li>
 
                     <li>
                     <strong>Macronutrients:</strong>
