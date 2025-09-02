@@ -46,7 +46,7 @@ export default function NutritionBreakdown(props) {
                         description='Summary of micros/other for the day and how they relate to goal using % or other metrics'
                     />  */}
 
-                    <DailyFoods />
+                    <DailyFoods foods={props.foods} />
                     
                 </> : 
                 // loading data

@@ -1,5 +1,5 @@
 import './nutrition-page.css'
-import BreakdownNutrition from './components/BreakdownNutrition'
+import NutritionBreakdown from './components/NutritionBreakdown'
 import InputNutrition from './components/InputNutrition'
 
 import { Link } from "react-router-dom"
@@ -13,6 +13,9 @@ export default function NutritionPage() {
     const [apiData, setApiData] = useState(null) // fetch the data from the database
     const [foodLoaded, setFoodLoaded] = useState(false)
     const [test, setTest] = useState([])
+    const [refreshTotal, setRefreshTotal] = useState(0)
+    const [totals, setTotals] = useState({})
+    const [rows, setRows] = useState([])
     const [nutrients, setNutrients] = useState({
         FoodName: '',
         Calories: 0,
@@ -82,22 +85,25 @@ export default function NutritionPage() {
     const todaysDate = new Date().toLocaleDateString("en-CA") // YYYY-MM-DD
 
     useEffect(() => {
-    async function getDB() {
-        try {
-            const res = await fetch(`/api/nutrition/${user_id}?date=${todaysDate}`)
+        async function getDB() {
+            try {
+                const res = await fetch(`/api/nutrition/${user_id}?date=${todaysDate}`)
 
-            if (!res.ok) throw new Error("Network response was not ok")
+                if (!res.ok) throw new Error("Network response was not ok")
 
-            const data = await res.json()
-            setApiData(data) // save totals + user info
+                const data = await res.json()
+                setApiData(data) // save totals + user info
+                setTotals(data.totals)
+                setRows(data.rows)
 
-            console.log("Fetched data:", data)
-            } catch (err) {
-            console.error("Error fetching user data:", err)
-            }
+                console.log("Fetched data:", data)
+            } 
+                catch (err) {
+                    console.error("Error fetching user data:", err)
+                }
         }
         getDB()
-    }, [user_id, todaysDate]) // only re-run if user_id or date changes
+    }, [user_id, todaysDate, refreshTotal]) // only re-run if user_id or date changes
        
 
     const handleRecipe = () => {
@@ -113,27 +119,25 @@ export default function NutritionPage() {
         try {
             // Build payload to match API
             const payload = {
-            foodName: foodItem,  // send the current food item
-            nutrients: {
-                Calories: nutrients.Calories,
-                Sugar: nutrients.Sugar,
-                Fiber: nutrients.Fiber,
-                Fats: nutrients.Fats,
-                Carbs: nutrients.Carbs,
-                Protein: nutrients.Protein,
-            }
+                foodName: foodItem,  // send the current food item
+                nutrients: {
+                    Calories: nutrients.Calories,
+                    Sugar: nutrients.Sugar,
+                    Fiber: nutrients.Fiber,
+                    Fats: nutrients.Fats,
+                    Carbs: nutrients.Carbs,
+                    Protein: nutrients.Protein,
+                }
             }
 
             const res = await fetch("/api/nutrition/add", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload)
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
             })
 
             const result = await res.json()
-
             console.log(result.message)
-            console.log("Today's totals:", result.totals)
 
         } catch (err) {
             console.error(err)
@@ -151,9 +155,9 @@ export default function NutritionPage() {
             Carbs: 0,
             Protein: 0,
         })
-
         setFoodLoaded(false)
-        }
+        setRefreshTotal(prev => prev + 1)
+    }
 
 
     return (
@@ -161,13 +165,13 @@ export default function NutritionPage() {
             {/* &nbsp; adds space before the span */}
             <h1 className='breakdown-username'>Nutrition Overview for&nbsp;
                 <Link to={'/user'}>
-                    <span>{ apiData ? apiData.name : ''}</span>
+                    <span>{ apiData ? apiData.user.name : ''}</span>
                 </Link>
             </h1>
             
             <div className='nutrition-container'>
                 
-                <BreakdownNutrition {...apiData} />
+                <NutritionBreakdown {...totals} foods={rows}/>
                 <InputNutrition 
                     submitFoodHandler={submitFoodHandler} 
                     handleRecipe={handleRecipe}

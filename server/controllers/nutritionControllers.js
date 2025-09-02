@@ -141,37 +141,60 @@ export const searchFood = async (req, res) => {
   }
 }
 
+/*
+export const getInfoController = async (req, res) => {
+  try {
+    const { id } = req.params
+    const date = req.query.date || new Date().toLocaleDateString('en-CA') // YYYY-MM-DD
 
+    const result = await pool.query(`
+        SELECT 
+          u.name,
+          SUM(n.protein)   AS total_protein,
+          SUM(n.carbs)     AS total_carbs,
+          SUM(n.fat)       AS total_fat,
+          SUM(n.fiber)     AS total_fiber,
+          SUM(n.sugar)     AS total_sugar,
+          SUM(n.calories)  AS total_calories
+        FROM users u
+        JOIN nutrition n ON u.user_id = n.user_id
+        WHERE u.user_id = $1 AND n.entry_date = $2
+        GROUP BY u.name;
+    `, [id, date])
 
-// get daily info from the db
-// export const getInfoController = async (req, res) => {
-//   try {
-//     const { id } = req.params
-//     // Use local date to avoid UTC issues
-//     const date = req.query.date || new Date().toLocaleDateString('en-CA') // YYYY-MM-DD
+    res.json(result.rows[0] || {
+      name: null,
+      total_protein: 0,
+      total_carbs: 0,
+      total_fat: 0,
+      total_fiber: 0,
+      total_sugar: 0,
+      total_calories: 0
+    })
 
-//     const result = await pool.query(`
-//       SELECT u.user_id, u.name, 
-//              n.calories, n.protein, n.carbs, n.fat, n.fiber, n.sugar
-//       FROM users u
-//       JOIN nutrition n ON u.user_id = n.user_id
-//       WHERE u.user_id = $1 AND n.entry_date = $2;
-//     `, [id, date])
-
-//     res.json(result.rows[0] || {}); // empty object if no entry
-//   } catch (err) {
-//     console.error(err)
-//     res.status(500).json({ error: 'Server error' })
-//   }
-// }
-
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ error: 'Server error' })
+  }
+}
+*/
 
 export const getInfoController = async (req, res) => {
   try {
     const { id } = req.params;
-    const date = req.query.date || new Date().toLocaleDateString('en-CA'); // YYYY-MM-DD
+    const date = req.query.date || new Date().toISOString().split("T")[0];
 
-    const result = await pool.query(`
+    // 1. Get all nutrition rows for that user & date
+    const rowsResult = await pool.query(`
+      SELECT *
+      FROM nutrition
+      WHERE user_id = $1 AND entry_date = $2
+      ORDER BY nutrition_id;
+    `, [id, date]);
+    const rows = rowsResult.rows;
+
+    // 2. Get totals + user name in one query
+    const totalsResult = await pool.query(`
       SELECT 
         u.name,
         SUM(n.protein)   AS total_protein,
@@ -186,7 +209,8 @@ export const getInfoController = async (req, res) => {
       GROUP BY u.name;
     `, [id, date]);
 
-    res.json(result.rows[0] || {
+    // totalsResult.rows[0] contains the summed values and name
+    const totals = totalsResult.rows[0] || {
       name: null,
       total_protein: 0,
       total_carbs: 0,
@@ -194,6 +218,12 @@ export const getInfoController = async (req, res) => {
       total_fiber: 0,
       total_sugar: 0,
       total_calories: 0
+    };
+
+    res.json({
+      user: { id, name: totals.name },
+      totals,
+      rows
     });
 
   } catch (err) {
@@ -201,6 +231,8 @@ export const getInfoController = async (req, res) => {
     res.status(500).json({ error: 'Server error' });
   }
 };
+
+
 
 
 
