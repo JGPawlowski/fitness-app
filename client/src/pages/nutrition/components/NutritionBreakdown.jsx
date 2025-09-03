@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import BreakdownCard from "./BreakdownCard";
-import DailyFoods from "./DailyFoods";
 
 
 export default function NutritionBreakdown(props) {
@@ -13,6 +12,10 @@ export default function NutritionBreakdown(props) {
         }, 350)
 
     }, [props.data])
+
+     const foodItems = props.foods.map((food) => (
+        <li key={food.nutrition_id}>{food.food_name}</li>
+    ))
 
 
     return (
@@ -39,14 +42,16 @@ export default function NutritionBreakdown(props) {
                             }}
                         description='Summary of macros for the day and how they relate to goal % or other metrics'
                     />
-                    
-                    {/* <BreakdownCard 
-                        title='Micros/Other:'
-                        fiber={props.total_fiber}
-                        description='Summary of micros/other for the day and how they relate to goal using % or other metrics'
-                    />  */}
 
-                    <DailyFoods foods={props.foods} />
+                    {/* Be able to delete and expand foods for a day */}
+                     <section className='breakdown-item-card'>
+                        <ul>
+                            {foodItems}
+                        </ul>
+                        <p>Show foods that have been eaten today</p>
+                        <p>Be able to select a food to get more of a breakdown of the food</p>
+                        <p>Delete or duplicate the food</p>
+                    </section>
                     
                 </> : 
                 // loading data

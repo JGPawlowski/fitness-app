@@ -79,7 +79,7 @@ export const insertNutritionController = async (req, res) => {
       return res.status(400).json({ error: 'Food name and nutrients are required' });
 
     const { Calories, Protein, Fats, Carbs, Fiber, Sugar } = nutrients;
-    const entry_date = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+    const entry_date = new Date().toLocaleDateString("en-CA") // YYYY-MM-DD
 
     // Insert the new nutrition row
     const insertQuery = `
@@ -182,7 +182,7 @@ export const getInfoController = async (req, res) => {
 export const getInfoController = async (req, res) => {
   try {
     const { id } = req.params;
-    const date = req.query.date || new Date().toISOString().split("T")[0];
+    const date = req.query.date || new Date().toLocaleDateString("en-CA")
 
     // 1. Get all nutrition rows for that user & date
     const rowsResult = await pool.query(`
