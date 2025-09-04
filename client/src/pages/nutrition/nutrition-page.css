@@ -185,8 +185,6 @@ select {
     align-items: center;
 } 
 
-
-
 .nutrition-label-data dt, 
 .nutrition-label-data dd {
     margin: 0px;
@@ -201,6 +199,10 @@ select {
     padding: 5px;
 }
 
+.food-item {
+    border-bottom: 1px solid #141421;
+    list-style: none;
+}
 
 .food-input {
     border: none;

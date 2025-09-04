@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import BreakdownCard from "./BreakdownCard";
 
 
+
 export default function NutritionBreakdown(props) {
     const [hasData, setHasData] = useState(false)
 
@@ -13,8 +14,13 @@ export default function NutritionBreakdown(props) {
 
     }, [props.data])
 
+
+    // get and display the food items from the db
      const foodItems = props.foods.map((food) => (
-        <li key={food.nutrition_id}>{food.food_name}</li>
+        <li key={food.nutrition_id} className='food-item'>
+            {food.food_name}
+            <div className='food-item-expanded'></div>
+        </li>
     ))
 
 
