@@ -2,6 +2,7 @@ import './weekly-styles.css'
 
 export default function Nutrition(props) {
     return (
+        
         <>
             <h2>Weekly Nutrition Averages</h2>
             <div className="nutrition-stats-container">

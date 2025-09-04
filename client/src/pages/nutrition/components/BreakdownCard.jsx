@@ -32,6 +32,7 @@ export default function BreakdownCard(props) {
                 <li>Protein: {macros.protein ? macros.protein : 0}</li>
                 <li>Fats: {macros.fats ? macros.fats : 0}</li>
                 <li>Sugar: {macros.sugar ? macros.sugar : 0}</li>
+                <li>Fiber: {macros.fiber ? macros.fiber : 0} </li>
 
             </ul> : null
             }

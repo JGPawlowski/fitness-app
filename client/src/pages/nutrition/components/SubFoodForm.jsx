@@ -49,6 +49,11 @@ export default function SubFoodForm({ submitToDB, nutrients, allData, setFoodLoa
                     <dd>{nutrients.Protein}</dd>
                 </div>
 
+                <div className='nutrition-label-data'>
+                    <dt><strong>Fiber:</strong></dt>
+                    <dd>{nutrients.Fiber}</dd>
+                </div>
+
             </div>
 
             <div className='sub-btn-div'>

@@ -8,9 +8,8 @@ import { useState, useEffect } from "react";
 export default function Weekly(props) {
 
     const [isVisible, setIsVisible] = useState(true)
-    const [apiData, setApiData] = useState(null)
-
-
+    const [totals, setTotals] = useState({})
+    
 
         // test user and date for fetching data
     const user_id = 1
@@ -24,7 +23,7 @@ export default function Weekly(props) {
                 if (!res.ok) throw new Error("Network response was not ok")
                     
                 const data = await res.json()
-                setApiData(data)
+                setTotals(data.totals)
 
             } catch(err) {
                 console.error(err)
@@ -32,12 +31,6 @@ export default function Weekly(props) {
         }
         getDB()
     }, [user_id, todaysDate])
-
-
-    useEffect(() => {
-        apiData ? console.log(apiData.total_fiber) : console.log('not working')
-    }, [apiData])
-
 
 
     const switchView = () => {
@@ -57,13 +50,13 @@ export default function Weekly(props) {
                 {
                     props.currentView === 'fitness' ?
                     <NutritionDash
-                        calories={apiData ? apiData.total_calories : 0}
-                        carbs={apiData ? apiData.total_carb : 0}
-                        protein={apiData ? apiData.total_protein : 0}
-                        fats={apiData ? apiData.total_fat : 0}
+                        calories={totals ? totals.total_calories : 0}
+                        carbs={totals ? totals.total_carb : 0}
+                        protein={totals ? totals.total_protein : 0}
+                        fats={totals ? totals.total_fat : 0}
                         vitMin={75}
-                        fiber={apiData ? apiData.total_fiber : 0}
-                        sugar={apiData ? apiData.total_sugar : 0}
+                        fiber={totals ? totals.total_fiber : 0}
+                        sugar={totals ? totals.total_sugar : 0}
                         water={240}
                     /> :
                     <FitnessDash 

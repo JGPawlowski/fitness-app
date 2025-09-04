@@ -38,7 +38,8 @@ export default function NutritionBreakdown(props) {
                                 carbs: props.total_carbs,
                                 protein: props.total_protein,
                                 fats: props.total_fat,
-                                sugar: props.total_sugar
+                                sugar: props.total_sugar,
+                                fiber: props.total_fiber
                             }}
                         description='Summary of macros for the day and how they relate to goal % or other metrics'
                     />
