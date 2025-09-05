@@ -14,12 +14,22 @@ export default function NutritionBreakdown(props) {
 
     }, [props.data])
 
+    const [isExpanded, setIsExpanded] = useState(false)
+    let expanded = isExpanded ? 'expanded' : 'collapsed'
+
 
     // get and display the food items from the db
      const foodItems = props.foods.map((food) => (
         <li key={food.nutrition_id} className='food-item'>
-            {food.food_name}
-            <div className='food-item-expanded'></div>
+            <div className='food-item-div'>
+                <button onClick={() => setIsExpanded(prev => !prev)}>{food.food_name}</button>
+                <p>calories</p>
+            </div>
+            <div className={`${expanded}`}>
+                <p style={{color: 'white'}}>Putting the rest of the nutritional values in here</p>
+                
+                <button onClick={() => setIsExpanded(prev => !prev)} className='expand-food-item-btn'>here</button>
+            </div>
         </li>
     ))
 
