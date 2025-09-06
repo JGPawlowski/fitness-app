@@ -27,6 +27,13 @@ export default function NutritionBreakdown(props) {
             </div>
             <div className={`${expanded}`}>
                 <p style={{color: 'white'}}>Putting the rest of the nutritional values in here</p>
+                <ul style={{color: 'white'}}>
+                    <li>Carbs:</li>
+                    <li>Protein:</li>
+                    <li>Fats:</li>
+                    <li>Sugar:</li>
+                    <li>Fiber:</li>
+                </ul>
                 
                 <button onClick={() => setIsExpanded(prev => !prev)} className='expand-food-item-btn'>here</button>
             </div>
