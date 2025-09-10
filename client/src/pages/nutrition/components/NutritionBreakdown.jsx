@@ -5,24 +5,31 @@ import FoodList from "./FoodList"
 
 export default function NutritionBreakdown(props) {
     const [hasData, setHasData] = useState(false)
+    const [foods, setFoods] = useState([])
 
     useEffect(() => {
-
         setTimeout(() => {
             setHasData(prev => !prev)
         }, 350)
-
     }, [props.data])
 
+    useEffect(() => {
+        setFoods(props.foods)
+    }, [props.foods])
 
+    const handleDelete = (id) => {
+        setFoods(prev => prev.filter((f) => f.nutrition_id === id))
+    }
 
-    // get and display the food items from the db
-     const foodItems = props.foods.map((food) => (
+    /*
+    const foodItems = foods.map((food) => (
             <FoodList
                 key={food.nutrition_id}
                 {...food}
+                onDelete={handleDelete}
             />
     ))
+    */
 
 
     return (
@@ -53,7 +60,15 @@ export default function NutritionBreakdown(props) {
                     {/* Be able to delete and expand foods for a day */}
                      <section className='breakdown-item-card'>
                         <ul className='foods-list'>
-                            {foodItems}
+                            {/* {foodItems} */}
+                            {/* get and display the food items from the db */}
+                            { foods.map((food) => (
+                                <FoodList
+                                    key={food.nutrition_id}
+                                    {...food}
+                                    onDelete={handleDelete}
+                                />
+                        ))}
                         </ul>
                     </section>
                     

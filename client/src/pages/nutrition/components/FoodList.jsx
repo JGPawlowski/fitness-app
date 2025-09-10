@@ -2,7 +2,7 @@ import { useState } from "react"
 import Modal from 'react-modal';
 
 
-export default function FoodList(food) {
+export default function FoodList(food, onDelete) {
     const [open, setOpen] = useState(false)
 
     const handleClose = () => {
@@ -24,6 +24,7 @@ export default function FoodList(food) {
             })
             if (res.ok) {
                 console.log('item deleted')
+                onDelete()
             }
             else {
                 console.log('Item NOT deleted')

@@ -30,10 +30,6 @@ export default function NutritionPage() {
     useEffect(() => {
         // only continue if there is a food item entered in the form
         if (!foodItem) return
-
-        
-        // testing 
-        console.log(`${foodItem} at ${mealTime}`)
         
         /* GET THE FOOD DATA FROM THE NUTRITIONIX API --- USING THE FORM TO ENTER IN FOOD BEING EATEN IN A DAY */
         async function getFood() {
@@ -41,8 +37,6 @@ export default function NutritionPage() {
             try {
                 const res = await fetch(`/api/nutrition/search?food=${foodItem}`)
                 const data = await res.json()
-
-                console.log(data)
                 
                 // set the nutrients and the amount
                 setNutrients({
