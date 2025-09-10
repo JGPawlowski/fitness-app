@@ -1,20 +1,63 @@
 import { useState } from "react"
-
+import Modal from 'react-modal';
 
 
 export default function FoodList(food) {
+    const [open, setOpen] = useState(false)
+
+    const handleClose = () => {
+        setOpen(false);
+    }
+
+    const handleOpen = () => {
+        setOpen(true);
+    }
+
     console.log(food)
     const [isExpanded, setIsExpanded] = useState(false)
     let expanded = isExpanded ? 'expanded' : 'collapsed'
+
+    const deleteFood = async () => {
+        try {
+            const res = await fetch(`/api/nutrition/${food.nutrition_id}`, {
+                method: 'DELETE'
+            })
+            if (res.ok) {
+                console.log('item deleted')
+            }
+            else {
+                console.log('Item NOT deleted')
+            }
+        } 
+        catch (err) {
+            console.err('Error: ', err)
+        }
+    }
     
     return (
         <li key={food.nutrition_id} className='food-item'>
             <div className='food-item-div'>
-                <button onClick={() => setIsExpanded(prev => !prev)}>{food.food_name}</button>
-                <p>{food.calories} calories</p>
+                <button className='food-item-btn' onClick={() => setIsExpanded(prev => !prev)}>{food.food_name}</button>
+                <p> {food.calories} Calories</p>
+                <button className='trashcan-btn' onClick={handleOpen}>
+                    <img className='trashcan-icon' src='/src/assets/trashcan.svg' alt='trashcan-icon'/>
+                </button>
+
+
+                <Modal isOpen={open} onClose={handleClose} className='delete-food-modal' ariaHideApp={false} >
+                    <div className='delete-food-modal-content '>
+                        <p>Are you sure you want to remove {food.food_name}?</p>
+                        <div className='modal-btns'>
+                            <button onClick={deleteFood} className='modal-btn' style={{backgroundColor: '#00D100'}}>
+                                Yes</button>
+                            <button onClick={handleClose} className='modal-btn' style={{backgroundColor: '#f15152'}}>
+                                Close</button>
+                        </div>
+                    </div>
+                </Modal>
+
             </div>
             <div className={`${expanded}`}>
-                <p style={{color: 'white'}}>Putting the rest of the nutritional values in here</p>
                 <ul style={{color: 'white'}}>
                     <li>Carbs: {food.carbs}</li>
                     <li>Protein: {food.protein}</li>

@@ -27,7 +27,6 @@ export default function NutritionBreakdown(props) {
 
     return (
         <div className='nutrition-container-left'>
-            {/* <h3 className='nutrition-container-h3'>Breakdown</h3>  */}
 
             <section className='nutrition-breakdown'>
                 { hasData ? 
@@ -53,12 +52,9 @@ export default function NutritionBreakdown(props) {
 
                     {/* Be able to delete and expand foods for a day */}
                      <section className='breakdown-item-card'>
-                        <ul>
+                        <ul className='foods-list'>
                             {foodItems}
                         </ul>
-                        <p>Show foods that have been eaten today</p>
-                        <p>Be able to select a food to get more of a breakdown of the food</p>
-                        <p>Delete or duplicate the food</p>
                     </section>
                     
                 </> : 
