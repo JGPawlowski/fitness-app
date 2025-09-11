@@ -6,11 +6,11 @@ export default function FoodList(food, onDelete) {
     const [open, setOpen] = useState(false)
 
     const handleClose = () => {
-        setOpen(false);
+        setOpen(false)
     }
 
     const handleOpen = () => {
-        setOpen(true);
+        setOpen(true)
     }
 
     console.log(food)
@@ -44,7 +44,7 @@ export default function FoodList(food, onDelete) {
                     <img className='trashcan-icon' src='/src/assets/trashcan.svg' alt='trashcan-icon'/>
                 </button>
 
-
+                {/* need to change ariaHideApp */}
                 <Modal isOpen={open} onClose={handleClose} className='delete-food-modal' ariaHideApp={false} >
                     <div className='delete-food-modal-content '>
                         <p>Are you sure you want to remove {food.food_name}?</p>
@@ -59,7 +59,7 @@ export default function FoodList(food, onDelete) {
 
             </div>
             <div className={`${expanded}`}>
-                <ul style={{color: 'white'}}>
+                <ul className='food-items-list'>
                     <li>Carbs: {food.carbs}</li>
                     <li>Protein: {food.protein}</li>
                     <li>Fats: {food.fat}</li>
@@ -67,7 +67,7 @@ export default function FoodList(food, onDelete) {
                     <li>Fiber: {food.fiber}</li>
                 </ul>
                 
-                <button onClick={() => setIsExpanded(prev => !prev)} className='expand-food-item-btn'>here</button>
+                <button onClick={() => setIsExpanded(prev => !prev)} className='expand-food-item-btn'>Close</button>
             </div>
         </li>
     )

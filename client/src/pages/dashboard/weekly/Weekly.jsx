@@ -51,7 +51,7 @@ export default function Weekly(props) {
                     props.currentView === 'fitness' ?
                     <NutritionDash
                         calories={totals ? totals.total_calories : 0}
-                        carbs={totals ? totals.total_carb : 0}
+                        carbs={totals ? totals.total_carbs : 0}
                         protein={totals ? totals.total_protein : 0}
                         fats={totals ? totals.total_fat : 0}
                         vitMin={75}

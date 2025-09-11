@@ -212,13 +212,23 @@ select {
     display: flex;
     flex-direction: column;
     padding-top: 12px;
-    border-radius: 5px;
-    width: inherit;
+    border-radius: 20px;
+    width: 300px;
     max-height: 200px;
     background-color: #141421;
 }
 
+.food-items-list {
+    color: #FAF9F6;
+    list-style: none;
+}
+
+.food-items-list li {
+    padding: 2px;
+}
+
 .food-item-btn {
+    font-family: Bebas Neue, sans-serif;
     min-height: 20px;
     min-width: 80px;
     border-radius: 5px;

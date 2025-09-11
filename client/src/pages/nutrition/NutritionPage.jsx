@@ -65,7 +65,6 @@ export default function NutritionPage() {
                 setTest(data[0])
 
             } catch(err) {
-                console.log('here')
                 console.log(err)
             }
         }
@@ -90,7 +89,6 @@ export default function NutritionPage() {
                 setTotals(data.totals)
                 setRows(data.rows)
 
-                console.log("Fetched data:", data)
             } 
                 catch (err) {
                     console.error("Error fetching user data:", err)

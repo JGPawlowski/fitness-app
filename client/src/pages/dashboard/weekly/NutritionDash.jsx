@@ -1,6 +1,7 @@
 import './weekly-styles.css'
 
 export default function Nutrition(props) {
+
     return (
         
         <>
@@ -12,9 +13,9 @@ export default function Nutrition(props) {
                     <li>
                     <strong>Macronutrients:</strong>
                     <ul>
-                        <li>Carbs: {props.carbs}g</li>
-                        <li>Proteins: {props.protein}g</li>
-                        <li>Fats: {props.fats}g</li>
+                        <li>Carbs: {props.carbs ?? 0.00}g</li>
+                        <li>Proteins: {props.protein ?? 0.00}g</li>
+                        <li>Fats: {props.fats ?? 0.00}g</li>
                     </ul>
                     </li>
 
@@ -22,8 +23,8 @@ export default function Nutrition(props) {
                     <strong>Micronutrients:</strong>
                     <ul>
                         <li>Vitamins & Minerals: {props.vitMin}</li>
-                        <li>Fiber: {props.fiber}g</li>
-                        <li>Sugar: {props.sugar}g</li>
+                        <li>Fiber: {props.fiber ?? 0.00}g</li>
+                        <li>Sugar: {props.sugar ?? 0.00}g</li>
                     </ul>
                     </li>
 
