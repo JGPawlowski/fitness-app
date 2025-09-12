@@ -76,7 +76,6 @@ export default function NutritionPage() {
     // test user
     const user_id = 1
     const todaysDate = new Date().toLocaleDateString("en-CA") // YYYY-MM-DD
-
     useEffect(() => {
         async function getDB() {
             try {

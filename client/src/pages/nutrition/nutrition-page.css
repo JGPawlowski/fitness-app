@@ -211,6 +211,7 @@ select {
 .expanded {
     display: flex;
     flex-direction: column;
+    justify-self: center;
     padding-top: 12px;
     border-radius: 20px;
     width: 300px;

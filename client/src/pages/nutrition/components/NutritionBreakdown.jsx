@@ -58,7 +58,7 @@ export default function NutritionBreakdown(props) {
                     />
 
                     {/* Be able to delete and expand foods for a day */}
-                     <section className='breakdown-item-card'>
+                    <section className='breakdown-item-card'>
                         <ul className='foods-list'>
                             {/* {foodItems} */}
                             {/* get and display the food items from the db */}
