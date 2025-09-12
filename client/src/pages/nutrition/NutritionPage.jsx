@@ -94,7 +94,7 @@ export default function NutritionPage() {
                 }
         }
         getDB()
-    }, [user_id, todaysDate, refreshTotal]) // only re-run if user_id or date changes
+    }, [user_id, todaysDate, refreshTotal])
        
 
     const handleRecipe = () => {
@@ -149,6 +149,8 @@ export default function NutritionPage() {
         setFoodLoaded(false)
         setRefreshTotal(prev => prev + 1)
     }
+
+
 
 
     return (
