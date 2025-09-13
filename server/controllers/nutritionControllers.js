@@ -159,7 +159,7 @@ export const deleteFood = async (req, res) => {
       return res.status(404).json({error: 'Item not found'})
     }
 
-    res.json({message: 'Item deleted', deleted:result.row[0]})
+    res.json({message: 'Item deleted'})
   } 
   catch (err) {
     console.log(err)

@@ -8,28 +8,12 @@ export default function NutritionBreakdown(props) {
     const [foods, setFoods] = useState([])
 
     useEffect(() => {
-        setTimeout(() => {
-            setHasData(prev => !prev)
-        }, 350)
+        setHasData(prev => !prev)
     }, [props.data])
 
     useEffect(() => {
         setFoods(props.foods)
     }, [props.foods])
-
-    const handleDelete = (id) => {
-        setFoods(prev => prev.filter((f) => f.nutrition_id === id))
-    }
-
-    /*
-    const foodItems = foods.map((food) => (
-            <FoodList
-                key={food.nutrition_id}
-                {...food}
-                onDelete={handleDelete}
-            />
-    ))
-    */
 
 
     return (
@@ -62,15 +46,16 @@ export default function NutritionBreakdown(props) {
                         <ul className='foods-list'>
                             {/* {foodItems} */}
                             {/* get and display the food items from the db */}
+                            
                             { foods.map((food) => (
                                 <FoodList
                                     key={food.nutrition_id}
                                     {...food}
-                                    onDelete={handleDelete}
                                 />
-                        ))}
+                            )) }
+
                         </ul>
-                    </section>}
+                    </section> }
                     
                 </> : 
                 // loading data

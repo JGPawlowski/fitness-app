@@ -152,7 +152,6 @@ export default function NutritionPage() {
 
 
 
-
     return (
         <div className='nutrition-main'>
             {/* &nbsp; adds space before the span */}
