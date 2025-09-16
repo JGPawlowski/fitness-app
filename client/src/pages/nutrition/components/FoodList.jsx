@@ -2,7 +2,7 @@ import { useState } from "react"
 import Modal from 'react-modal';
 
 
-export default function FoodList(food) {
+export default function FoodList({ food, handleDelete }) {
     const [open, setOpen] = useState(false)
 
     const handleClose = () => {
@@ -17,22 +17,11 @@ export default function FoodList(food) {
     const [isExpanded, setIsExpanded] = useState(false)
     let expanded = isExpanded ? 'expanded' : 'collapsed'
 
-    const deleteFood = async () => {
+
+
+    function deleteFood() {
         handleClose()
-        try {
-            const res = await fetch(`/api/nutrition/${food.nutrition_id}`, {
-                method: 'DELETE'
-            })
-            if (res.ok) {
-                console.log('item deleted')
-            }
-            else {
-                console.log('Item NOT deleted')
-            }
-        } 
-        catch (err) {
-            console.error('Error: ', err)
-        }
+        handleDelete(food.nutrition_id)
     }
     
     return (

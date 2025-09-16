@@ -15,6 +15,27 @@ export default function NutritionBreakdown(props) {
         setFoods(props.foods)
     }, [props.foods])
 
+    async function deleteFood(foodID) {
+
+        setFoods(prev => prev.filter(food => (
+            food.nutrition_id != foodID
+        )))
+
+        try {
+            const res = await fetch(`/api/nutrition/${foodID}`, {
+                method: 'DELETE'
+            })
+            if (res.ok) {
+                console.log('item deleted')
+            }
+            else {
+                console.log('Item NOT deleted')
+            }
+        } 
+        catch (err) {
+            console.error('Error: ', err)
+        }
+    }
 
     return (
         <div className='nutrition-container-left'>
@@ -50,7 +71,8 @@ export default function NutritionBreakdown(props) {
                             { foods.map((food) => (
                                 <FoodList
                                     key={food.nutrition_id}
-                                    {...food}
+                                    handleDelete={deleteFood}
+                                    food={food}
                                 />
                             )) }
 
@@ -63,7 +85,7 @@ export default function NutritionBreakdown(props) {
                     <h3>Loading Nutrition Data...</h3>
                 </section>
 
-}
+        }
             </section>
 
         </div>
