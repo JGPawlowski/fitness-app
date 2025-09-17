@@ -214,12 +214,13 @@ select {
     justify-self: center;
     padding-top: 12px;
     border-radius: 20px;
-    width: 300px;
+    min-width: 300px;
     max-height: 200px;
     background-color: #141421;
 }
 
 .food-items-list {
+    font-size: 0.9rem;
     color: #FAF9F6;
     list-style: none;
 }

@@ -55,7 +55,6 @@ export default function FoodList({ food, handleDelete }) {
                     <li>Sugar: {food.sugar}</li>
                     <li>Fiber: {food.fiber}</li>
                 </ul>
-                
                 <button onClick={() => setIsExpanded(prev => !prev)} className='expand-food-item-btn'>Close</button>
             </div>
         </li>
