@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 
 export default function NutritionPage() {
     // if the recipe is showing or not --- will use whenever setting up useRef
-    const [recipe, setRecipe] = useState(true)
+    const [recipe, setRecipe] = useState(false)
     const [foodItem, setFoodItem] = useState('')
     const [mealTime, setMealTime] = useState('')
     const [apiData, setApiData] = useState(null) // fetch the data from the database
