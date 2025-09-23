@@ -1,5 +1,5 @@
 import express from 'express'
-import { getInfoController, searchFood, insertNutritionController, deleteFood, /* getUser */ } from '../controllers/nutritionControllers.js'
+import { getInfoController, searchFood, insertNutritionController, deleteFood, getUser  } from '../controllers/nutritionControllers.js'
 
 const router = express.Router()
 
@@ -8,7 +8,7 @@ const router = express.Router()
 router.get('/search', searchFood)
 
 // get the username 
-// router.get('/:user_id', getUser)
+router.get('/user', getUser)
 
 // GET /api/nutrition/:id?date=YYYY-MM-DD
 router.get('/:id', getInfoController)

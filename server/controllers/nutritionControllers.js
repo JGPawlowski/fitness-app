@@ -71,25 +71,23 @@ export const searchFood = async (req, res) => {
   }
 }
 
-// export const getUser = async (req, res) => {
-//   try {
+export const getUser = async (req, res) => {
+  try {
+    const { user_id } = req.query
+    if (!user_id) return res.status(400).json({error: 'User ID query is required'})
 
-//     const { user_id } = req.query
-//     if (!user_id) return res.status(400).json({error: 'User ID query is required'})
+    const response = await pool.query(`
+      select name from users
+      where user_id = $1
+      `, [user_id])
 
-//     const response = await pool.query(`
-//       select name from users
-//       where user_id = $1
-//       `, [user_id])
-
-
-//       res.json(response.rows[0] || null)
-//   }
-//   catch (err) {
-//     console.error(err)
-//     res.status(500).json({error: 'Server error', details: err.message})
-//   }
-// }
+      res.json(response.rows[0] || null)
+  }
+  catch (err) {
+    console.error(err)
+    res.status(500).json({error: 'Server error', details: err.message})
+  }
+}
 
 
 export const getInfoController = async (req, res) => {

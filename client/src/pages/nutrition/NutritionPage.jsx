@@ -2,7 +2,7 @@ import './nutrition-page.css'
 import NutritionBreakdown from './components/NutritionBreakdown'
 import InputNutrition from './components/InputNutrition'
 
-import { Link } from "react-router-dom"
+import { Link, useResolvedPath } from "react-router-dom"
 import { useState, useEffect } from 'react'
 
 export default function NutritionPage() {
@@ -16,6 +16,7 @@ export default function NutritionPage() {
     const [refreshTotal, setRefreshTotal] = useState(0)
     const [totals, setTotals] = useState({})
     const [rows, setRows] = useState([])
+    const [user, setUser] = useState('')
     const [nutrients, setNutrients] = useState({
         FoodName: '',
         Calories: 0,
@@ -150,6 +151,24 @@ export default function NutritionPage() {
         setRefreshTotal(prev => prev + 1)
     }
 
+    useEffect(() => {
+        async function getUser() {
+            try {
+                const res = await fetch(`/api/nutrition/user?user_id=${user_id}`)
+                if (!res.ok) throw new Error('Network response was not ok')
+
+                const data = await res.json()
+                setUser(data.name)
+
+            }
+            catch (err) {
+                console.error('Error fetching the user from the database: ', err)
+            }
+        }
+        getUser()
+    }, [user_id])
+
+    
 
 
     return (
@@ -157,7 +176,7 @@ export default function NutritionPage() {
             {/* &nbsp; adds space before the span */}
             <h1 className='breakdown-username'>Nutrition Overview for&nbsp;
                 <Link to={'/user'}>
-                    <span>{ apiData ? apiData.user.name : ''}</span>
+                    <span>{ user }</span>
                 </Link>
             </h1>
             
