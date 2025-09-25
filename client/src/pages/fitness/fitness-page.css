@@ -1,0 +1,15 @@
+.fitness-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fitness-select-div {
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+    background-color: #FAF9F6;
+    padding: 15px;
+    border-radius: 5px;
+}
