@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.fitness-main > h1 {
+    color: #f15152;
+}
+
 .fitness-select-div {
     display: flex;
     flex-direction: column;
