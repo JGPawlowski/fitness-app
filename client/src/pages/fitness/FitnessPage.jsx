@@ -16,7 +16,10 @@ export default function FitnessPage() {
                     <option>Workout</option>
                     <option>Other</option>
                 </select>
-                <button>Select</button>
+                <label>Length</label>
+                <input required></input>
+                
+                <button>Enter</button>
             </form>
 
         </div>
