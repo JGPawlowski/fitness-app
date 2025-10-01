@@ -9,18 +9,24 @@ export default function FitnessPage() {
         <div className='fitness-main'>
             <h1>Fitness</h1>
 
-            <form onSubmit={subChoice} className='fitness-select-div'>
-                <label>Select a workout</label>
-                <select>
-                    <option>Running</option>
-                    <option>Workout</option>
-                    <option>Other</option>
-                </select>
-                <label>Length</label>
-                <input required></input>
-                
-                <button>Enter</button>
-            </form>
+            <div className='left-side'>
+                This side will be breakdown fitness
+            </div>
+
+            <div className='right-side'>
+                <form onSubmit={subChoice} className='fitness-select-div'>
+                    <label>Select a workout</label>
+                    <select>
+                        <option>Running</option>
+                        <option>Workout</option>
+                        <option>Other</option>
+                    </select>
+                    <label>Length</label>
+                    <input required></input>
+                    
+                    <button>Enter</button>
+                </form>
+            </div>
 
         </div>
     )
