@@ -1,31 +1,18 @@
 import './fitness-page.css'
 
+import EnterFitness from './components/EnterFitness'
+import DisplayFitness from './components/DisplayFitness'
+
 export default function FitnessPage() {
-    function subChoice() {
-        console.log('choice selected')
-    }
 
     return (
         <div className='fitness-main'>
-            <h1>Fitness</h1>
+            <DisplayFitness />
 
-            <div className='left-side'>
-                This side will be breakdown fitness
-            </div>
-
-            <div className='right-side'>
-                <form onSubmit={subChoice} className='fitness-select-div'>
-                    <label>Select a workout</label>
-                    <select>
-                        <option>Running</option>
-                        <option>Workout</option>
-                        <option>Other</option>
-                    </select>
-                    <label>Length</label>
-                    <input required></input>
-                    
-                    <button>Enter</button>
-                </form>
+            <div className='fitness-bottom'>
+                {/* testing */}
+                <EnterFitness />
+                <EnterFitness />
             </div>
 
         </div>
