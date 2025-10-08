@@ -38,5 +38,6 @@
 
 .display-fitness-main {
     background-color: #FAF9F6;
-    
+    padding: 10px;
+    border-radius: 5px;
 }
