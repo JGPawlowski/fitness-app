@@ -41,3 +41,11 @@
     padding: 10px;
     border-radius: 5px;
 }
+
+.plan-fitness-main {
+    background-color: #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 300px;
+    height: fit-content;
+}
