@@ -26,15 +26,6 @@
     color: #f15152;
 }
 
-.fitness-select-form {
-    display: flex;
-    flex-direction: column;
-    min-width: 250px;
-    height: fit-content;
-    background-color: #FAF9F6;
-    padding: 15px;
-    border-radius: 5px;
-}
 
 .display-fitness-main {
     background-color: #FAF9F6;
@@ -48,4 +39,37 @@
     border-radius: 5px;
     min-height: 300px;
     height: fit-content;
+}
+
+.fitness-select-form {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    min-width: 250px;
+    height: fit-content;
+    background-color: #FAF9F6;
+    padding: 15px;
+    border-radius: 5px;
+    min-height: 150px;
+}
+
+.workout-select-label {
+    font-family: Bebas Neue, sans-serif;
+    font-size: 1.3rem;
+    margin: 10px 10px 3px 10px;
+}
+
+.workout-select {
+    margin: 5px 10px 8px 10px;
+    padding: 2px;
+}
+
+.workout-form-btn {
+    padding: 3px;
+    min-width: 80px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f15152;
+    color: #FAF9F6;
 }

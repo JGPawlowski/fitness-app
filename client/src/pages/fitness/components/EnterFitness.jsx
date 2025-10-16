@@ -2,8 +2,9 @@
 
 export default function EnterFitness() {
 
-    function subChoice() {
-        console.log('choice selected')
+    function subChoice(formData) {
+        const workout = formData.get('workout-type')
+        console.log(workout)
     }
 
 
@@ -11,18 +12,17 @@ export default function EnterFitness() {
 
     return (
 
-        <form onSubmit={subChoice} className='fitness-select-form'>
-            <p>need to figure out another section for this page other than entering the data</p>
-            <label>Select a workout</label>
-            <select>
-                <option>Running</option>
-                <option>Workout</option>
-                <option>Other</option>
+        <form action={subChoice} className='fitness-select-form'>
+
+            <label className='workout-select-label'>Select a workout</label>
+            <select className='workout-select' id='workout-type' name='workout-type' defaultValue=''>
+                <option value='' disabled>Select a workout</option>
+                <option value='endurance'>Endurance</option>
+                <option value='strength'>Strength</option>
+                <option value='other'>Other</option>
             </select>
-            <label>Length</label>
-            <input required></input>
             
-            <button>Enter</button>
+            <button className='workout-form-btn'>Enter</button>
         </form>
 
     )
