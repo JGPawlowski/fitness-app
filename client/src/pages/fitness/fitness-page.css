@@ -1,11 +1,4 @@
-/* .fitness-main {
-    display: flex;
-    grid-template-columns: 1fr 1fr; 
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
-
+/* FITNESS MAIN COMPONENT */
 
 .fitness-main {
     display: flex;
@@ -27,18 +20,14 @@
 }
 
 
+
+
+/* DISPLAY FITNESS COMPONENT */
+
 .display-fitness-main {
     background-color: #FAF9F6;
     padding: 10px;
     border-radius: 5px;
-}
-
-.plan-fitness-main {
-    background-color: #FAF9F6;
-    padding: 10px;
-    border-radius: 5px;
-    min-height: 300px;
-    height: fit-content;
 }
 
 .fitness-select-form {
@@ -72,4 +61,36 @@
     border-radius: 5px;
     background-color: #f15152;
     color: #FAF9F6;
+}
+
+
+
+
+/* PLANNING COMPONENT */
+
+.plan-fitness-main {
+    background-color: #FAF9F6;
+    padding: 10px;
+    border-radius: 5px;
+    min-height: 300px;
+    height: fit-content;
+}
+
+.day-of-week-planning {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid black;
+}
+
+.day-of-week-planning button {
+    font-family: Bebas Neue, sans-serif;
+    font-size: 1rem;
+    color: #141421;
+    width: 80px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: lightgrey;
+    margin: 5px 3px 10px 3px;
 }

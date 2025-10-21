@@ -3,10 +3,17 @@
 export default function PlanFitness() {
     return (
         <div className='plan-fitness-main'>
-            <h1>Planning....</h1>
-            <p>Can show the plan for the day and be able to edit the fitness plans for the week</p>
-            <p>Show what has been accomplished and other things about the week</p>
-            <p>Dropdown for each day of the week</p>
+            <div className='day-of-week-planning'>
+                <button>Monday</button>
+                <button>Tuesday</button>
+                <button>Wednesday</button>
+                <button>Thursday</button>
+                <button>Friday</button>
+                <button>Saturday</button>
+                <button>Sunday</button> 
+            </div>
+            <p>After the day of the week is clicked, show a time schedule of what the plan is for the day</p>
+            <p>Automatically start with the current day to be the button selected</p>
         </div>
     )
 }
