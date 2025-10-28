@@ -5,9 +5,14 @@ export default function PlanFitness() {
 
     // show the schedule / rendure the schedule component when it is made
     const [showDayData, setShowDayData] = useState(false)
+    const [day, setday] = useState('Current Day')
 
     function dayData(day) {
-        console.log(day)
+        // use for showing the data for the correct day that is clicked
+        // could set up the ability to set repeatable activities
+        setday(day)
+        // need to change how this works
+        setShowDayData(prev => !prev)
     }
 
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
@@ -30,8 +35,9 @@ export default function PlanFitness() {
             </div> 
             <p>After the day of the week is clicked, show a time schedule of what the plan is for the day</p>
             <p>Automatically start with the current day to be the button selected</p>
+            <h1>{day}</h1>
 
-            { showDayData && <h1>Showing...</h1> }
+            { showDayData ? <h1>Showing...</h1> : <h1>Not Showing...</h1>}
         </div>
     )
 }
