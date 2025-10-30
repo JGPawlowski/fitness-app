@@ -21,6 +21,10 @@ export default function EnterFitness() {
                 <option value='strength'>Strength</option>
                 <option value='other'>Other</option>
             </select>
+
+            <label>Workout</label>
+            <input required></input>
+
             
             <button className='workout-form-btn'>Enter</button>
         </form>
